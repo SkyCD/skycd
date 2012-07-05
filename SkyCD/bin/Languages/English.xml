@@ -1,0 +1,101 @@
+<language>
+  <Form1>
+    <Tools>&amp;Tools</Tools>
+    <Options>&amp;Options...</Options>
+    <Help>&amp;Help</Help>
+    <HomePage>&amp;Home Page</HomePage>
+    <Donate>&amp;Donate!</Donate>
+    <File>&amp;File</File>
+    <New>&amp;New</New>
+    <Open>&amp;Open...</Open>
+    <Save>&amp;Save</Save>
+    <SaveAs>Save &amp;As...</SaveAs>
+    <Properties>&amp;Properties...</Properties>
+    <Exit>&amp;Exit</Exit>
+    <Edit>&amp;Edit</Edit>
+    <Add>Add...</Add>
+    <Delete>&amp;Delete</Delete>
+    <View>&amp;View</View>
+    <StatusBar>&amp;StatusBar</StatusBar>
+    <Tiles>&amp;Tiles</Tiles>
+    <SmallIcons>Small &amp;Icons</SmallIcons>
+    <LargeIcons>L&amp;arge Icons</LargeIcons>
+    <List>&amp;List</List>
+    <Details>&amp;Details</Details>
+    <ArrangeIconsBy>Arrange Icons By</ArrangeIconsBy>
+    <Name>&amp;Name</Name>
+    <Type>&amp;Type</Type>
+    <Refresh>&amp;Refresh</Refresh>
+    <About>&amp;About...</About>
+    <Contents>&amp;Contents</Contents>
+    <Expand>&amp;Expand</Expand>
+    <Collapse>C&amp;ollapse</Collapse>
+    <Done>Done.</Done>
+    <Browser>Browser</Browser>
+  </Form1>
+  <frmOptions>
+    <OK>OK</OK>
+    <Cancel>Cancel</Cancel>
+    <PlugIns>Plug-Ins</PlugIns>
+    <Configure>&amp;Configure...</Configure>
+    <Refresh>&amp;Refresh</Refresh>
+    <Name>Name</Name>
+    <Type>Type</Type>
+    <ExtendedInfo>Extended Info</ExtendedInfo>
+    <PlugInslist>Plug-Ins &amp;list:</PlugInslist>
+    <PlugInspath>&amp;Plug-Ins path:</PlugInspath>
+    <Language>Language</Language>
+    <Options>Options</Options>
+    <BecauseyouhavechangedsomesettingthisapplicationmustrestartDoyouwantrestartnow>Because you have changed some setting, this application must restart. Do you want restart now?</BecauseyouhavechangedsomesettingthisapplicationmustrestartDoyouwantrestartnow>
+    <Restart>Restart</Restart>
+  </frmOptions>
+  <PlugInInfo>
+    <FileFormatSupport>File Format Support</FileFormatSupport>
+    <InterfacePlugIn>Interface PlugIn</InterfacePlugIn>
+  </PlugInInfo>
+  <FolderBrowserDialog>
+    <SelectPlugInsFolder>Select Plug-Ins Folder</SelectPlugInsFolder>
+  </FolderBrowserDialog>
+  <OpenFileDialog>
+    <Open>Open</Open>
+  </OpenFileDialog>
+  <About>
+    <NETEDITION>{0} .NET EDITION</NETEDITION>
+    <Info>Info</Info>
+    <Version>Version: {0}</Version>
+    <Company>Company: {0}</Company>
+    <Memory>Memory</Memory>
+    <AvailablePhysicalMemory>Available Physical Memory: {0}</AvailablePhysicalMemory>
+    <AvailableVirtualMemory>Available Virtual Memory: {0}</AvailableVirtualMemory>
+    <TotalPhysicalMemory>Total Physical Memory: {0}</TotalPhysicalMemory>
+    <TotalVirtualMemory>Total Virtual Memory: {0}</TotalVirtualMemory>
+    <UsedMemory>Used Memory: {0}</UsedMemory>
+    <BigThanxTo>Big Thanx To:</BigThanxTo>
+    <foraddingtotheirprogramslistSkyCD>for adding to their programs list SkyCD</foraddingtotheirprogramslistSkyCD>
+    <forwebspaceprojectpage>for webspace/project page</forwebspaceprojectpage>
+    <ThanxalsogoestothesePersons>Thanx also goes to these Persons:</ThanxalsogoestothesePersons>
+    <ideas>ideas</ideas>
+    <support>support</support>
+    <andYou>and You!</andYou>
+    <About>About</About>
+  </About>
+  <frmAddToList>
+    <AddToList>Add To List</AddToList>
+    <SelectFolder>Select Folder:</SelectFolder>
+    <IncludeSubfolders>Include Subfolders</IncludeSubfolders>
+    <EnterInternetaddress>Enter Internet address:</EnterInternetaddress>
+    <Selectdrive>Select drive:</Selectdrive>
+    <IncludeMediaInfo>Include Media Info</IncludeMediaInfo>
+    <Selectfullnameforselectedmedia>Select full name for selected media:</Selectfullnameforselectedmedia>
+    <ToselectedMediaFolder>To selected Media/Folder</ToselectedMediaFolder>
+    <AsnewMedia>As new Media</AsnewMedia>
+    <Allcontentsadd>All contents add...</Allcontentsadd>
+    <IncludeExtendedInfo>Include Extended Info</IncludeExtendedInfo>
+    <Misc>Misc</Misc>
+    <Cancel>Cancel</Cancel>
+    <OK>OK</OK>
+    <FromInternet>From Internet</FromInternet>
+    <FromMedia>From Media</FromMedia>
+    <FromFolder>From Folder</FromFolder>
+  </frmAddToList>
+</language>

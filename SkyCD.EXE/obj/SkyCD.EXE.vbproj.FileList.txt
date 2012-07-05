@@ -1,0 +1,8 @@
+bin\Debug\SkyCD.EXE.exe
+bin\Debug\SkyCD.EXE.pdb
+obj\Debug\SkyCD.EXE.exe
+obj\Debug\SkyCD.EXE.pdb
+bin\Release\SkyCD.EXE.exe
+bin\Release\SkyCD.EXE.pdb
+obj\Release\SkyCD.EXE.exe
+obj\Release\SkyCD.EXE.pdb

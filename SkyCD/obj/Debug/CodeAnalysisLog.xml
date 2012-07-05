@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files\microsoft visual studio 8\team tools\static analysis tools\fxcop\Xml\FxCopReport.Xsl"?>
+<FxCopReport Version="8">
+ <Targets>
+  <Target Name="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD\bin\Debug\SkyCD.exe">
+   <Modules>
+    <Module Name="skycd.exe">
+     <Messages>
+      <Message TypeName="AssembliesShouldDeclareMinimumSecurity" Category="Microsoft.Usage" CheckId="CA2209" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+       <Issue Certainty="95" Level="CriticalError">No valid permission requests were found for assembly 'SkyCD'. You should always specify the minimum security permissions using SecurityAction.RequestMinimum. If assembly permission requests have been specified, they are not enforceable; use the PermView.exe tool to view the assembly's permissions. Whidbey customers can use PermCalc.exe which gives even more detailed information.</Issue>
+      </Message>
+      <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+       <Issue Name="NoStrongName" Certainty="95" Level="CriticalError">Sign 'SkyCD' with a strong name key.</Issue>
+      </Message>
+     </Messages>
+     <Namespaces>
+      <Namespace Name="SkyCD">
+       <Types>
+        <Type Name="FileSupport_TextFormat" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Remove all underscores from type 'FileSupport_TextFormat'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="IsSupported(System.String):System.Object" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="this" TypeName="AvoidUnusedParameters" Category="Microsoft.Performance" CheckId="CA1801" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="MarkAsStatic" Certainty="95" Level="Warning" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="FileSupport-TextFormat.vb" Line="7">The 'this' parameter (or 'Me' in VB) of FileSupport_TextFormat.IsSupported(String):Object is never used. Mark the method as static (or Shared in VB) or use 'this'/Me in the method body.</Issue>
+            </Message>
+            <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="ShouldBeCompoundWord" Certainty="80" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="FileSupport-TextFormat.vb" Line="7">The discrete term 'Filename' in parameter 'Filename' should be expressed as a compound term, 'FileName'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="FileSupport-TextFormat.vb" Line="7">Correct the casing of parameter name 'Filename'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Load(System.String):System.Void" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="this" TypeName="AvoidUnusedParameters" Category="Microsoft.Performance" CheckId="CA1801" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="MarkAsStatic" Certainty="95" Level="Warning" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="FileSupport-TextFormat.vb" Line="23">The 'this' parameter (or 'Me' in VB) of FileSupport_TextFormat.Load(String):Void is never used. Mark the method as static (or Shared in VB) or use 'this'/Me in the method body.</Issue>
+            </Message>
+            <Message Id="Filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="ShouldBeCompoundWord" Certainty="80" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="FileSupport-TextFormat.vb" Line="23">The discrete term 'Filename' in parameter 'Filename' should be expressed as a compound term, 'FileName'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="FileSupport-TextFormat.vb" Line="23">Correct the casing of parameter name 'Filename'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Form1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name=".ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotInitializeUnnecessarily" Category="Microsoft.Performance" CheckId="CA1805" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning">Form1..ctor() initializes field FileFilter of type System.Object to null. Remove this initialization as it will be done automatically by the runtime.</Issue>
+             <Issue Certainty="90" Level="Warning">Form1..ctor() initializes field NeedSave of type System.Boolean to false. Remove this initialization as it will be done automatically by the runtime.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="FileFilter" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'FileFilter' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="FileName" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'FileName' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="NeedSave" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'NeedSave' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="UpdateList(System.Int32):System.Boolean" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Form1.vb" Line="114">Replace method 'Form1.UpdateList(Int32):Boolean' with an overload that supplies all default arguments.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Form1.vb" Line="114">Correct the casing of parameter name 'ParentID'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="ParameterId" Certainty="85" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Form1.vb" Line="114">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in parameter name 'ParentID' by changing it to 'Id'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="UpdateTree(System.Int32):System.Void" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Form1.vb" Line="165">Replace method 'Form1.UpdateTree(Int32):Void' with an overload that supplies all default arguments.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Form1.vb" Line="165">Correct the casing of parameter name 'ParentID'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="ParameterId" Certainty="85" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Form1.vb" Line="165">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in parameter name 'ParentID' by changing it to 'Id'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="scdProperties" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Correct the casing of type name 'scdProperties'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="Item[System.String]" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="get_Item(System.String):System.Object" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+             <Messages>
+              <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+               <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="11">Correct the casing of parameter name 'Name'.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="scdProperties+scdProperty" Kind="Struct" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Correct the casing of type name 'scdProperty'.</Issue>
+          </Message>
+          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="VisualBasicModule" Certainty="90" Level="Error">Do not nest type 'SkyCD.scdProperties+scdProperty' or change its accessibility so that it is not externally visible. If this type is defined in a VB Module, it will be considered a nested type to other .Net languages. In that case, consider moving the type outside of the Module.</Issue>
+          </Message>
+          <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+           <Issue Name="Equals" Certainty="75" Level="Warning">'SkyCD.scdProperties+scdProperty' should override Equals.</Issue>
+           <Issue Name="op_Equality" Certainty="75" Level="Warning">'SkyCD.scdProperties+scdProperty' should override the equality (==) and inequality (!=) operators.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="Name" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'Name' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Value" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'Value' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Settings" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="SkyCD_TempDB" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="get_SkyCD_TempDB():System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD\My Project" File="Settings.Designer.vb" Line="57">'Settings.get_SkyCD_TempDB():String' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="skycd_simple" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Correct the casing of type name 'skycd_simple'.</Issue>
+          </Message>
+          <Message Id="skycd" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of the unrecognized token 'skycd' in type name 'SkyCD.skycd_simple'.</Issue>
+          </Message>
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Remove all underscores from type 'skycd_simple'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="Add(System.String,SkyCD.skycd_simple+scdItemType,System.Int32):System.Int32" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="92">Replace method 'skycd_simple.Add(String, scdItemType, Int32):Int32' with an overload that supplies all default arguments.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="92">Correct the casing of parameter name 'Name'.</Issue>
+            </Message>
+            <Message Id="1#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="92">Correct the casing of parameter name 'ItemType'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="92">Correct the casing of parameter name 'ParentID'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="ParameterId" Certainty="85" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="92">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in parameter name 'ParentID' by changing it to 'Id'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="AddPath(System.String,System.Int32,SkyCD.skycd_simple+scdItemType,SkyCD.skycd_simple+scdItemType):System.Int32" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="144">Replace method 'skycd_simple.AddPath(String, Int32, scdItemType, scdItemType):Int32' with an overload that supplies all default arguments.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="144">Correct the casing of parameter name 'Path'.</Issue>
+            </Message>
+            <Message Id="1#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="144">Correct the casing of parameter name 'ParentID'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="144">Correct the casing of parameter name 'FirstItemType'.</Issue>
+            </Message>
+            <Message Id="3#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="144">Correct the casing of parameter name 'LastItemType'.</Issue>
+            </Message>
+            <Message Id="1#" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="ParameterId" Certainty="85" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="144">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in parameter name 'ParentID' by changing it to 'Id'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Exists(System.String,System.Int32):System.Int32" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="129">Replace method 'skycd_simple.Exists(String, Int32):Int32' with an overload that supplies all default arguments.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="129">Correct the casing of parameter name 'Name'.</Issue>
+            </Message>
+            <Message Id="1#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="129">Correct the casing of parameter name 'ParentID'.</Issue>
+            </Message>
+            <Message Id="1#" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="ParameterId" Certainty="85" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="129">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in parameter name 'ParentID' by changing it to 'Id'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Export(System.Data.OleDb.OleDbDataAdapter&amp;):System.Void" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="DoNotPassTypesByReference" Category="Microsoft.Design" CheckId="CA1045" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="CriticalWarning" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="170">Consider a design that does not require that 'db' be a reference parameter.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Items" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'Items' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Remove(System.Int32):System.Boolean" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="107">Modify 'skycd_simple.Remove(Int32):Boolean' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="skycd-simple.vb" Line="107">Correct the casing of parameter name 'ID'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="skycd_simple+scdItem" Kind="Struct" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Correct the casing of type name 'scdItem'.</Issue>
+          </Message>
+          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="VisualBasicModule" Certainty="90" Level="Error">Do not nest type 'SkyCD.skycd_simple+scdItem' or change its accessibility so that it is not externally visible. If this type is defined in a VB Module, it will be considered a nested type to other .Net languages. In that case, consider moving the type outside of the Module.</Issue>
+          </Message>
+          <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+           <Issue Name="Equals" Certainty="75" Level="Warning">'SkyCD.skycd_simple+scdItem' should override Equals.</Issue>
+           <Issue Name="op_Equality" Certainty="75" Level="Warning">'SkyCD.skycd_simple+scdItem' should override the equality (==) and inequality (!=) operators.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="AdvancedInfo" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'AdvancedInfo' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="ItemType" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'ItemType' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Name" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'Name' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="ParentID" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'ParentID' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+            <Message TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="MemberId" Certainty="85" Level="Error">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in member name 'scdItem.ParentID' by changing it to 'Id'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Size" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'Size' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="skycd_simple+scdItemType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="EnumStorageShouldBeInt32" Category="Microsoft.Design" CheckId="CA1028" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="NotInt32" Certainty="60" Level="Warning">If possible, make the underlying type of 'SkyCD.skycd_simple+scdItemType' System.Int32 instead of System.Byte.</Issue>
+          </Message>
+          <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Correct the casing of type name 'scdItemType'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="scdCDDisk" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdCDDisk'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdDVDDisk" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdDVDDisk'.</Issue>
+            </Message>
+            <Message TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the capitalization of member name 'scdItemType.scdDVDDisk'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdFile" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdFile'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdFolder" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdFolder'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdUnknown" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdUnknown'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="skycd_simple+scdItemTypeShow" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="EnumStorageShouldBeInt32" Category="Microsoft.Design" CheckId="CA1028" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="NotInt32" Certainty="60" Level="Warning">If possible, make the underlying type of 'SkyCD.skycd_simple+scdItemTypeShow' System.Int32 instead of System.Byte.</Issue>
+          </Message>
+          <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="95" Level="Error">Correct the casing of type name 'scdItemTypeShow'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="scdAny" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdAny'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdCDDisk" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdCDDisk'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdDVDDisk" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdDVDDisk'.</Issue>
+            </Message>
+            <Message TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the capitalization of member name 'scdItemTypeShow.scdDVDDisk'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdFile" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdFile'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdFolder" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdFolder'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdNotFile" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdNotFile'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="scdUnknown" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Correct the casing of member name 'scdUnknown'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="SkyCD.File">
+       <Types>
+        <Type Name="Functions" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="GetFileIcon(System.String):System.Drawing.Icon" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Functions.vb" Line="61">Modify 'Functions.GetFileIcon(String):Icon' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="ex" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Functions.vb" Line="61">Functions.GetFileIcon(String):Icon declares a local, 'ex', of type System.Exception, which is never used or is only assigned to. Use this local or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="SkyCD.Strings">
+       <Types>
+        <Type Name="Functions" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="Size2Int(System.String):System.Int64" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Functions.vb" Line="16">'Functions.Size2Int(String):Int64' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message Id="Text" TypeName="AvoidUnusedParameters" Category="Microsoft.Performance" CheckId="CA1801" Status="Active" Created="2005-10-11 12:03:56Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\SkyCD\SkyCD" File="Functions.vb" Line="16">Parameter 'Text' of Functions.Size2Int(String):Int64 is never used. Remove the parameter or use it in the method body.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AssembliesShouldDeclareMinimumSecurity" Category="Microsoft.Usage" CheckId="CA2209">
+   <Name>Assemblies should declare minimum security</Name>
+   <Description>Permission requests prevent security exceptions from being thrown after code in an assembly has already begun executing. With permission requests, the assembly does not load if it has insufficient permissions. This rule will fire if you have specified a permission request incorrectly, or incompletely. If you have specified requests but FxCop reports a violation for this rule, use the PermView.exe tool to view the security permissions in the assembly. An unenforceable permission appears as an empty permission set. Whidbey customers can use PermCalc.exe which gives even more detailed information. You should add attributes specifying what permissions your assembly will demand, might demand, and what permissions it does not want granted.  For example, the following attribute indicates that an assembly will, at minimum, require read access to the UserName environment variable: [assembly:EnvironmentPermissionAttribute(SecurityAction.RequestMinimum,&#xD;&#xA;Read="UserName")]. To specify permissions that the assembly might demand, use SecurityAction.RequestOptional. To specify permissions that the assembly must not be granted, use SecurityAction.RequestRefuse.</Description>
+   <Resolution Name="Default">No valid permission requests were found for assembly '{0}'. You should always specify the minimum security permissions using SecurityAction.RequestMinimum. If assembly permission requests have been specified, they are not enforceable; use the PermView.exe tool to view the assembly's permissions. Whidbey customers can use PermCalc.exe which gives even more detailed information.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Usage/AssembliesShouldDeclareMinimumSecurity.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="UsageRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+   <Name>Assemblies should have valid strong names</Name>
+   <Description>Either the assembly has no strong name, an invalid one, or the strong name is valid only because of the computer configuration. The assembly should not be deployed in this state. The most common causes of this are: 1) The assembly's contents were modified after it was signed. 2) The signing process failed. 3) The assembly was delay-signed. 4) A registry key existed that allowed the check to pass (where it would not have otherwise).</Description>
+   <Resolution Name="NoStrongName">Sign '{0}' with a strong name key.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Design/AssembliesShouldHaveValidStrongNames.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>Avoid uncalled private code</Name>
+   <Description>There is uncalled code that is not externally visible and is not a known runtime entry point. If this violation fires in error, please send a problem report to the FxCop team.</Description>
+   <Resolution Name="Default">'{0}' appears to have no upstream public or protected callers.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Performance/AvoidUncalledPrivateCode.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUnusedParameters" Category="Microsoft.Performance" CheckId="CA1801">
+   <Name>Avoid unused parameters</Name>
+   <Description>Avoid declaring parameters that are not used in the method body. Unused parameters incur maintenance and performance costs. Sometimes a violation of this rule can point to an implementation bug in the method (i.e. the parameter should actually have been used in the method body). Exclude warnings of this rule if the parameter has to exist because of backward compatibility.</Description>
+   <Resolution Name="Default">Parameter '{0}' of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   <Resolution Name="MarkAsStatic">The 'this' parameter (or 'Me' in VB) of {0} is never used. Mark the method as static (or Shared in VB) or use 'this'/Me in the method body.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Performance/AvoidUnusedParameters.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
+   <Name>Compound words should be cased correctly</Name>
+   <Description>Avoid creating compound words from terms which exist in the dictionary as discrete terms. Do not create a compound word such as 'StopWatch' or 'PopUp'. These terms are recognized in the dictionary and should be cased as 'Stopwatch' and 'Popup'.</Description>
+   <Resolution Name="ShouldBeCompoundWord">The discrete term '{0}' in {1} '{2}' should be expressed as a compound term, '{3}'.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Naming/CompoundWordsShouldBeCasedCorrectly.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="80">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026">
+   <Name>Default parameters should not be used</Name>
+   <Description>Some programming languages do not support default parameters. Replace default parameters with method overloads that supply the default argument.</Description>
+   <Resolution Name="Default">Replace method '{0}' with an overload that supplies all default arguments.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Design/DefaultParametersShouldNotBeUsed.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+   <Name>Do not catch general exception types</Name>
+   <Description>You should not catch Exception or SystemException. Catching generic exception types can hide run-time problems from the library user, and can complicate debugging. You should catch only those exceptions that you can handle gracefully.</Description>
+   <Resolution Name="Default">Modify '{0}' to catch a more specific exception than '{1}' or rethrow the exception.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Design/DoNotCatchGeneralExceptionTypes.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051">
+   <Name>Do not declare visible instance fields</Name>
+   <Description>Public or protected instance fields limit your ability to change the implementation details for those data items. Use properties instead. They do not compromise usability or performance and they do provide flexibility in that they conceal the  implementation details of the underlying data.</Description>
+   <Resolution Name="Default">Make '{0}' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Design/DoNotDeclareVisibleInstanceFields.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotInitializeUnnecessarily" Category="Microsoft.Performance" CheckId="CA1805">
+   <Name>Do not initialize unnecessarily</Name>
+   <Description>Do not make initializations that have already been done by the runtime.</Description>
+   <Resolution Name="Default">{0} initializes field {1} of type {2} to {3}. Remove this initialization as it will be done automatically by the runtime.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Performance/DoNotInitializeUnnecessarily.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotPassTypesByReference" Category="Microsoft.Design" CheckId="CA1045">
+   <Name>Do not pass types by reference</Name>
+   <Description>Although there are legitimate times to use reference parameters, such use frequently indicates a design that does not conform to the design guidelines for managed code.</Description>
+   <Resolution Name="Default">Consider a design that does not require that '{0}' be a reference parameter.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Design/DoNotPassTypesByReference.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="EnumStorageShouldBeInt32" Category="Microsoft.Design" CheckId="CA1028">
+   <Name>Enum Storage should be Int32</Name>
+   <Description>There is little or no benefit to using a type smaller than Int32. You might require a type that is larger than Int32 if: 1) the enumeration values are flags and there are or will be many (&amp;amp;gt;32) values, or 2) the type needs to be different from Int32 for backward compatibility. Avoid using an underlying type that is not integral.</Description>
+   <Resolution Name="NotInt32">If possible, make the underlying type of '{0}' System.Int32 instead of {1}.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Design/EnumStorageShouldBeInt32.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="60">Warning</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+   <Name>Identifiers should be cased correctly</Name>
+   <Description>Type, namespace, and member identifiers are pascal-cased. Parameter identifiers are camel-cased. The pascal-casing convention capitalizes the first letter of each word, as in BackColor. The camel-casing convention formats the first letter of the first word in lowercase and capitalizes the first letter of all subsequent words, as in backgroundColor.</Description>
+   <Resolution Name="Member">Correct the casing of member name '{0}'.</Resolution>
+   <Resolution Name="Parameter">Correct the casing of parameter name '{0}'.</Resolution>
+   <Resolution Name="Type">Correct the casing of type name '{0}'.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Naming/IdentifiersShouldBeCasedCorrectly.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+   <Name>Identifiers should be spelled correctly</Name>
+   <Description>The individual words that make up an identifier should not be abbreviated and should be spelled correctly. If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</Description>
+   <Resolution Name="Type">Correct the spelling of the unrecognized token '{0}' in type name '{1}'.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Naming/IdentifiersShouldBeSpelledCorrectly.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="75">CriticalWarning</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707">
+   <Name>Identifiers should not contain underscores</Name>
+   <Description>Do not use underscores when specifying identifiers. Some generated Visual Studio identifiers for applications contain underscore characters. Underscore characters should generally be avoided in public identifiers.</Description>
+   <Resolution Name="Type">Remove all underscores from type '{0}'.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Naming/IdentifiersShouldNotContainUnderscores.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705">
+   <Name>Long acronyms should be pascal-cased</Name>
+   <Description>Acronyms of three or more letters should be Pascal-cased. For example, use XmlSpace rather than XMLSpace. A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</Description>
+   <Resolution Name="Member">Correct the capitalization of member name '{0}'.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Naming/LongAcronymsShouldBePascalCased.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034">
+   <Name>Nested types should not be visible</Name>
+   <Description>Do not use public, protected or protected internal (Protected Friend) nested types as a way of grouping types. Use namespaces for this purpose. There are very limited scenarios where nested types are the best design. Also, nested type member accessibility is not clearly understood by all audiences. Enumerators are exempt from this rule.</Description>
+   <Resolution Name="VisualBasicModule">Do not nest type '{0}' or change its accessibility so that it is not externally visible. If this type is defined in a VB Module, it will be considered a nested type to other .Net languages. In that case, consider moving the type outside of the Module.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Design/NestedTypesShouldNotBeVisible.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815">
+   <Name>Override equals and operator equals on value types</Name>
+   <Description>The default System.ValueType implementation might not perform as well as a custom implementation.</Description>
+   <Resolution Name="Equals">'{0}' should override Equals.</Resolution>
+   <Resolution Name="op_Equality">'{0}' should override the equality (==) and inequality (!=) operators.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Performance/OverrideEqualsAndOperatorEqualsOnValueTypes.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804">
+   <Name>Remove unused locals</Name>
+   <Description>Remove locals that are not used or are only assigned to in method implementations.</Description>
+   <Resolution Name="Default">{0} declares a local, '{1}', of type {2}, which is never used or is only assigned to. Use this local or remove it.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Performance/RemoveUnusedLocals.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706">
+   <Name>Short acronyms should be uppercase</Name>
+   <Description>Two letter acronyms should be upper-cased. For example, use System.IO instead of System.Io. Although it may be common practice for some two letter acronyms to not be fully capitalized, violations of this rule should not be excluded for this reason. For example, 'DbConnection', is common but incorrect; use DBConnection. A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</Description>
+   <Resolution Name="MemberId">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in member name '{0}' by changing it to 'Id'.</Resolution>
+   <Resolution Name="ParameterId">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of '{0}' in parameter name '{1}' by changing it to '{2}'.</Resolution>
+   <Owner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules.aspx?version=unstable&amp;url=/Naming/ShortAcronymsShouldBeUppercase.html</Url>
+   <Email>fxcopbug@microsoft.com</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+ </Rules>
+</FxCopReport>

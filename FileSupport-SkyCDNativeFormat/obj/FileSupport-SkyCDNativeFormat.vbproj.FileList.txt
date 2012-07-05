@@ -1,0 +1,8 @@
+..\SkyCD\bin\Plug-Ins\temp.mdb
+..\SkyCD\bin\Plug-Ins\FileSupport-SkyCDNativeFormat.dll
+..\SkyCD\bin\Plug-Ins\FileSupport-SkyCDNativeFormat.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\Resources.resources
+obj\Release\FileSupport-SkyCDNativeFormat.vbproj.GenerateResource.Cache
+obj\Release\FileSupport-SkyCDNativeFormat.dll
+obj\Release\FileSupport-SkyCDNativeFormat.pdb

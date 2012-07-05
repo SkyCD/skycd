@@ -1,0 +1,11 @@
+..\..\..\..\..\..\..\Temp\temp.mdb
+..\SkyCD\bin\Plug-Ins\temp.mdb
+..\SkyCD\bin\Plug-Ins\FileSupport_CompressedTextFormat.dll
+..\SkyCD\bin\Plug-Ins\FileSupport_CompressedTextFormat.pdb
+..\SkyCD\bin\Plug-Ins\FileSupport_CompressedTextFormat.xml
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\Resources.resources
+obj\Release\FileSupport_CompressedTextFormat.vbproj.GenerateResource.Cache
+obj\Release\FileSupport_CompressedTextFormat.dll
+obj\Release\FileSupport_CompressedTextFormat.xml
+obj\Release\FileSupport_CompressedTextFormat.pdb

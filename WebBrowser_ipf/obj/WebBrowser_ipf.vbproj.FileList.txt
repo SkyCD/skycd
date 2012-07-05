@@ -1,0 +1,7 @@
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\Resources.resources
+obj\Release\WebBrowser_ipf.vbproj.GenerateResource.Cache
+obj\Release\Native.WebBrowser_ipf.manifest
+obj\Release\WebBrowser_ipf.dll
+obj\Release\WebBrowser_ipf.xml
+obj\Release\WebBrowser_ipf.pdb

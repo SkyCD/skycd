@@ -1,0 +1,154 @@
+<language>
+  <Form1>
+    <Tools>&amp;Tools</Tools>
+    <Options>&amp;Options...</Options>
+    <Help>&amp;Help</Help>
+    <HomePage>&amp;Home Page</HomePage>
+    <Donate>&amp;Donate!</Donate>
+    <File>&amp;File</File>
+    <New>&amp;New</New>
+    <Open>&amp;Open...</Open>
+    <Save>&amp;Save</Save>
+    <SaveAs>Save &amp;As...</SaveAs>
+    <Properties>&amp;Properties...</Properties>
+    <Exit>&amp;Exit</Exit>
+    <Edit>&amp;Edit</Edit>
+    <Add>Add...</Add>
+    <Delete>&amp;Delete</Delete>
+    <View>&amp;View</View>
+    <StatusBar>&amp;StatusBar</StatusBar>
+    <Tiles>&amp;Tiles</Tiles>
+    <SmallIcons>Small &amp;Icons</SmallIcons>
+    <LargeIcons>L&amp;arge Icons</LargeIcons>
+    <List>&amp;List</List>
+    <Details>&amp;Details</Details>
+    <ArrangeIconsBy>Arrange Icons By</ArrangeIconsBy>
+    <Name>&amp;Name</Name>
+    <Type>&amp;Type</Type>
+    <Refresh>&amp;Refresh</Refresh>
+    <About>&amp;About...</About>
+    <Expand>&amp;Expand</Expand>
+    <Collapse>C&amp;ollapse</Collapse>
+    <Done>Done.</Done>
+    <Preparingdatabaseformodifications>Preparing database for modifications...</Preparingdatabaseformodifications>
+    <Readingdirectorytree>Reading directory tree...</Readingdirectorytree>
+    <Readingdirectorycontent>Reading directory content...</Readingdirectorycontent>
+    <ThiscollectionwaseditedDoyouwanttosaveit>This collection was edited. Do you want to save it?</ThiscollectionwaseditedDoyouwanttosaveit>
+    <Loading>Loading...</Loading>
+    <Badfileformat>Bad file format!</Badfileformat>
+    <Error>Error</Error>
+    <Updating>Updating...</Updating>
+    <Contents>&amp;Contents</Contents>
+    <YouselectedtosavethisfileinformatwitchcantcorrectlystoreallfeaturessupportedbythisSkyCDversionIfyouareusingsomeofthisfeaturesforexamplefilecommentssomedatacanbelostDoyouwanttocontinue>You selected to save this file in format, witch can't correctly store all features supported by this SkyCD version. If you are using some of this features (for example: file comments), some data can be lost. Do you want to continue?</YouselectedtosavethisfileinformatwitchcantcorrectlystoreallfeaturessupportedbythisSkyCDversionIfyouareusingsomeofthisfeaturesforexamplefilecommentssomedatacanbelostDoyouwanttocontinue>
+    <FileSave>File Save</FileSave>
+    <Parsing>Parsing...</Parsing>
+    <Saving>Saving...</Saving>
+    <Directorynotfound>Directory not found.</Directorynotfound>
+    <Badusername>Bad username</Badusername>
+    <Browser>Browser</Browser>
+    <CantfindhelpfilePleasereinstallapplication>Can't find help file.
+
+Please reinstall application.</CantfindhelpfilePleasereinstallapplication>
+    <Cantopenselectedfile>Can't open selected file</Cantopenselectedfile>
+  </Form1>
+  <frmOptions>
+    <OK>OK</OK>
+    <Cancel>Cancel</Cancel>
+    <PlugIns>Plug-Ins</PlugIns>
+    <Configure>&amp;Configure...</Configure>
+    <Refresh>&amp;Refresh</Refresh>
+    <Name>Name</Name>
+    <Type>Type</Type>
+    <ExtendedInfo>Extended Info</ExtendedInfo>
+    <PlugInslist>Plug-Ins &amp;list:</PlugInslist>
+    <PlugInspath>&amp;Plug-Ins path:</PlugInspath>
+    <Language>Language</Language>
+    <Options>Options</Options>
+    <BecauseyouhavechangedsomesettingthisapplicationmustrestartDoyouwantrestartnow>Because you have changed some setting, this application must restart. Do you want restart now?</BecauseyouhavechangedsomesettingthisapplicationmustrestartDoyouwantrestartnow>
+    <Restart>Restart</Restart>
+  </frmOptions>
+  <frmAddToList>
+    <AddToList>Add To List</AddToList>
+    <SelectFolder>Select Folder:</SelectFolder>
+    <IncludeSubfolders>Include Subfolders</IncludeSubfolders>
+    <EnterInternetaddress>Enter Internet address:</EnterInternetaddress>
+    <Selectdrive>Select drive:</Selectdrive>
+    <IncludeMediaInfo>Include Media Info</IncludeMediaInfo>
+    <Selectfullnameforselectedmedia>Select full name for selected media:</Selectfullnameforselectedmedia>
+    <ToselectedMediaFolder>To selected Media/Folder</ToselectedMediaFolder>
+    <AsnewMedia>As new Media</AsnewMedia>
+    <Allcontentsadd>All contents add...</Allcontentsadd>
+    <IncludeExtendedInfo>Include Extended Info</IncludeExtendedInfo>
+    <Misc>Misc</Misc>
+    <Cancel>Cancel</Cancel>
+    <OK>OK</OK>
+    <FromInternet>From Internet</FromInternet>
+    <FromMedia>From Media</FromMedia>
+    <FromFolder>From Folder</FromFolder>
+  </frmAddToList>
+  <About>
+    <NETEDITION>{0} .NET EDITION</NETEDITION>
+    <Info>Info</Info>
+    <Version>Version: {0}</Version>
+    <Company>Company: {0}</Company>
+    <Copyright>Copyright: {0}</Copyright>
+    <Memory>Memory</Memory>
+    <AvailablePhysicalMemory>Available Physical Memory: {0}</AvailablePhysicalMemory>
+    <AvailableVirtualMemory>Available Virtual Memory: {0}</AvailableVirtualMemory>
+    <TotalPhysicalMemory>Total Physical Memory: {0}</TotalPhysicalMemory>
+    <TotalVirtualMemory>Total Virtual Memory: {0}</TotalVirtualMemory>
+    <UsedMemory>Used Memory: {0}</UsedMemory>
+    <BigThanxTo>Big Thanx To:</BigThanxTo>
+    <foraddingtotheirprogramslistSkyCD>for adding to their programs list SkyCD</foraddingtotheirprogramslistSkyCD>
+    <forwebspaceprojectpage>for webspace/project page</forwebspaceprojectpage>
+    <ThanxalsogoestothesePersons>Thanx also goes to these Persons:</ThanxalsogoestothesePersons>
+    <ideas>ideas</ideas>
+    <support>support</support>
+    <andYou>and You!</andYou>
+    <About>About</About>
+  </About>
+  <frmAdding>
+    <Reading>Reading '{0}'...</Reading>
+    <Readingdirectoryfromremoteserver>Reading directory from remote server...</Readingdirectoryfromremoteserver>
+  </frmAdding>
+  <OpenFileDialog>
+    <Open>Open</Open>
+  </OpenFileDialog>
+  <String>
+    <Unknown>Unknown</Unknown>
+  </String>
+  <FolderBrowserDialog>
+    <SelectPlugInsFolder>Select Plug-Ins Folder</SelectPlugInsFolder>
+  </FolderBrowserDialog>
+  <frmProperties>
+    <CreationTime>Creation Time</CreationTime>
+    <LastAccessTime>Last Access Time</LastAccessTime>
+    <LastWriteTime>Last Write Time</LastWriteTime>
+    <Attributes>Attributes</Attributes>
+    <Size>Size</Size>
+    <IsReadOnly>Is Read Only</IsReadOnly>
+    <Address>Address</Address>
+    <False>False</False>
+    <Bytes>21,625     Bytes</Bytes>
+    <HiddenArchive>Hidden, Archive</HiddenArchive>
+    <ReadOnlyHiddenDirectoryArchiveNotContentIndexed>ReadOnly, Hidden, Directory, Archive, NotContentIndexed</ReadOnlyHiddenDirectoryArchiveNotContentIndexed>
+    <Unknown>Unknown</Unknown>
+    <MB>15,5083656 MB   </MB>
+    <Property>Property</Property>
+    <Value>Value</Value>
+  </frmProperties>
+  <SaveFileDialog>
+    <SaveAs>Save As</SaveAs>
+  </SaveFileDialog>
+  <frmLogin>
+    <Serverlogin>Server login</Serverlogin>
+    <Username>&amp;User name</Username>
+    <Password>&amp;Password</Password>
+    <OK>&amp;OK</OK>
+    <Cancel>&amp;Cancel</Cancel>
+  </frmLogin>
+  <PlugInInfo>
+    <FileFormatSupport>File Format Support</FileFormatSupport>
+    <InterfacePlugIn>Interface PlugIn</InterfacePlugIn>
+  </PlugInInfo>
+</language>

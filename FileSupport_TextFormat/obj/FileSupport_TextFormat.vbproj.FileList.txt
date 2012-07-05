@@ -1,0 +1,8 @@
+..\SkyCD\bin\Plug-Ins\temp.mdb
+..\SkyCD\bin\Plug-Ins\FileSupport_TextFormat.dll
+..\SkyCD\bin\Plug-Ins\FileSupport_TextFormat.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\Resources.resources
+obj\Release\FileSupport_TextFormat.vbproj.GenerateResource.Cache
+obj\Release\FileSupport_TextFormat.dll
+obj\Release\FileSupport_TextFormat.pdb
