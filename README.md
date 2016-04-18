@@ -1,4 +1,4 @@
-[![Download SkyCD](https://img.shields.io/sourceforge/dt/skycd.svg)](https://sourceforge.net/projects/skycd/files/latest/download) [![PyPI](https://img.shields.io/pypi/l/Django.svg?maxAge=2592000)]()
+[![Download SkyCD](https://img.shields.io/sourceforge/dt/skycd.svg)](https://sourceforge.net/projects/skycd/files/latest/download) [![License](https://img.shields.io/github/license/SkyCD/SkyCD.svg?maxAge=2592000)](License.txt)
 # SkyCD
 SkyCD is a program for indexing your files in CDs and CDs also. All indexing information is saved in text files, so anyone can edit or view with existing text editor/viewer. You can also send these files to your friends & they will know what CD you have.
 
