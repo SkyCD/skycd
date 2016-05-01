@@ -3,7 +3,6 @@ Imports SkyCD.Database
 Imports System.Data.SQLite
 Imports System.Data.Common
 Imports System.Reflection
-Imports System.Data.SQLite.Linq
 
 Public Class DatabaseProxy
     Implements iConnection
@@ -20,33 +19,41 @@ Public Class DatabaseProxy
             Me.Database.Open()
         End If
         cmd.ExecuteNonQuery()
-        Me.Database.Close()
+        'Me.Database.Close()
     End Sub
 
     Public Function Insert(table As String, item As Item) As Integer Implements iConnection.Insert
-        Dim sql As String = "INSERT INTO `" + table + "` ("
+        Static cmd As SQLiteCommand = Nothing
         Dim properties As PropertyInfo() = GetType(Item).GetProperties
-        Dim field_names As New List(Of String)
-        Dim field_values As New List(Of Object)
-        Dim rep As String = ""
-        For Each p As PropertyInfo In properties
-            If Not p.CanRead Then Continue For
-            field_names.Add(p.Name)
-            field_values.Add(p.GetValue(item))
-            rep += "?,"
-        Next
-        If rep.Length > 0 Then
-            rep = rep.Substring(0, rep.Length - 1)
+        If cmd Is Nothing Then
+            Dim sql As String = "INSERT INTO `" + table + "` ("
+            Dim field_names As New List(Of String)
+            Dim field_values As New List(Of Object)
+            Dim rep As String = ""
+            For Each p As PropertyInfo In properties
+                If Not p.CanRead Then Continue For
+                field_names.Add(p.Name)
+                field_values.Add(p.GetValue(item))
+                rep += "?,"
+            Next
+            If rep.Length > 0 Then
+                rep = rep.Substring(0, rep.Length - 1)
+            Else
+                Return Nothing
+            End If
+            sql += String.Join(",", field_names.ToArray()) + ") VALUES(" + rep + ");"
+            cmd = Me.CreateCommand(sql, field_values.ToArray())
         Else
-            Return Nothing
+            cmd.Parameters.Clear()
+            For Each p As PropertyInfo In properties
+                cmd.Parameters.Add(New SQLiteParameter(DbType.String, p.GetValue(item)))
+            Next
         End If
-        sql += String.Join(",", field_names.ToArray()) + ") VALUES(" + rep + ");"
-        Dim cmd As SQLiteCommand = Me.CreateCommand(sql, field_values.ToArray())
         If Not Me.Database.State = ConnectionState.Open Then
             Me.Database.Open()
         End If
         Dim ret As Integer = cmd.ExecuteNonQuery()
-        Me.Database.Close()
+        ' Me.Database.Close()
         Return ret
     End Function
 
@@ -97,4 +104,15 @@ Public Class DatabaseProxy
         Return Nothing
     End Function
 
+    Public Function CreateTransaction() As Object Implements iConnection.CreateTransaction
+        Return Me.Database.BeginTransaction()
+    End Function
+
+    Sub CommitTransaction(ByRef Transaction As Object) Implements iConnection.CommitTransaction
+        CType(Transaction, SQLiteTransaction).Commit()
+    End Sub
+
+    Sub RollbackTransaction(ByRef Transaction As Object) Implements iConnection.RollbackTransaction
+        CType(Transaction, SQLiteTransaction).Rollback()
+    End Sub
 End Class

@@ -5,6 +5,15 @@
 
         End Sub
 
+        Public Sub New(Name As String, parentID As Integer, Type As String, Properties As String, AID As Integer)
+            Me.ID = Nothing
+            Me.Name = Name
+            Me.ParentID = parentID
+            Me.Type = Type
+            Me.Properties = Properties
+            Me.AID = AID
+        End Sub
+
         Public Sub New(ID As Integer, Name As String, parentID As Integer, Type As String, Properties As String, AID As Integer)
             Me.ID = ID
             Me.Name = Name

@@ -1,4 +1,5 @@
 Imports System.IO
+Imports SkyCD.App.Plugins
 
 Namespace Forms
 
@@ -46,7 +47,11 @@ Namespace Forms
         Private Sub cmdBrowsePlugInPath_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdBrowsePlugInPath.Click
             Dim FS As New FolderBrowserDialog()
             With FS
-                .SelectedPath = Me.txtPlugIsPath.Text
+                Dim path As String = Me.txtPlugIsPath.Text
+                While Not Directory.Exists(path)
+                    path = Directory.GetParent(path).FullName
+                End While
+                .SelectedPath = path
                 .ShowNewFolderButton = False
                 .Description = Translate(FS, "Select Plug-Ins Folder")
                 If .ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
@@ -62,9 +67,9 @@ Namespace Forms
         Public Sub UpdatePlugInsList()
             Me.lvPlugIns.Items.Clear()
             'Dim LV As ListViewItem
-            Dim List() As PlugInsSupport.PlugInInfo = Forms.Main.PlugInsSuport.GetPlugIns()
+            Dim List() As PlugInInfo = Forms.Main.PlugInsSuport.GetPlugIns()
             If IsNothing(List) Then Exit Sub
-            For Each That As PlugInsSupport.PlugInInfo In List
+            For Each That As PlugInInfo In List
                 Try
                     Me.lvPlugIns.Items.Add(That.Name).SubItems.Add(That.Type)
                 Catch ex As NullReferenceException
@@ -84,12 +89,12 @@ Namespace Forms
         End Sub
 
         Private Sub lvPlugIns_Click(ByVal sender As Object, ByVal e As EventArgs) Handles lvPlugIns.Click
-            Me.cmdConfigurePlugIn.Enabled = (New PlugInsSupport.PlugInInfo(Me.lvPlugIns.SelectedItems.Item(0).Text)).HasConfig
+            Me.cmdConfigurePlugIn.Enabled = (New PlugInInfo(Me.lvPlugIns.SelectedItems.Item(0).Text)).HasConfig
         End Sub
 
         Private Sub cmdConfigurePlugIn_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdConfigurePlugIn.Click
             Dim Dll As New PlugInsSupport()
-            Dll.Load(Me.lvPlugIns.SelectedItems.Item(0).Text).ShowDialog()
+            Dll.Load(Of Object)(Me.lvPlugIns.SelectedItems.Item(0).Text).ShowDialog()
         End Sub
 
         Private Sub txtPlugIsPath_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtPlugIsPath.TextChanged

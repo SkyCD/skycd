@@ -285,16 +285,18 @@ start:
         Dim status As iFileFormat.scdStatus
         status.scdEvent = iFileFormat.scdStatus.scdProcedure.scdExporting
         status.scdValue = 0
+        Dim transaction = Me.db.CreateTransaction()
         RaiseEvent UpdateStatus(status)
         Me.db.Execute("DELETE FROM list WHERE AID = ?", Me.application_guid)
         For Each Item As scdItem In Me.Items
             If Item.Name = "" Then Continue For
-            Me.db.Insert("list", New SkyCD.Database.Item(I, Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Me.application_guid))
+            Me.db.Insert("list", New SkyCD.Database.Item(Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Me.application_guid))
             I = I + 1
-            If I Mod 3 = 15 Then RaiseEvent NeedDoEvents()
+            If I Mod 3 = 5 Then RaiseEvent NeedDoEvents()
             status.scdValue = Convert.ToByte(100 / Me.Items.Length * I)
             RaiseEvent UpdateStatus(status)
         Next
+        Me.db.CommitTransaction(transaction)
     End Sub
 
     Public Function GetSupportedFileFormats() As List(Of String) Implements iFileFormat.GetSupportedFileFormats

@@ -3,6 +3,7 @@ Imports SkyCD.Libraries.AdvancedFunctions.File
 Imports SkyCD_Simple
 Imports SkyCD_Simple.skycd_simple
 Imports System.IO
+Imports SkyCD.App.Plugins
 
 Namespace Forms
 
@@ -118,6 +119,9 @@ Namespace Forms
         End Sub
 
         Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
+
+            Me.DBConnection = New DatabaseProxy(My.Application.Info.DirectoryPath + "\data.db")
+            ''Me.lvBrowse.DataBindings.Add()
 
             Me.Left = modGlobal.Settings.ReadSetting("Left", "Window", Me.Left)
             Me.Top = modGlobal.Settings.ReadSetting("Top", "Window", Me.Top)
@@ -236,8 +240,10 @@ Namespace Forms
             Dim FI As New IO.FileInfo(Me.FileName)
             Me.Text = "SkyCD - " + FI.Name
             FI = Nothing
-            Me.tvTree.SelectedNode = Me.tvTree.Nodes.Item(0)
-            Me.tvTree.SelectedNode.Expand()
+            If Me.tvTree.Nodes.Count > 0 Then
+                Me.tvTree.SelectedNode = Me.tvTree.Nodes.Item(0)
+                Me.tvTree.SelectedNode.Expand()
+            End If
             FileStream = Nothing
             Me.SaveToolStripMenuItem.Enabled = False
             Me.SaveAsToolStripMenuItem.Enabled = True
@@ -574,8 +580,6 @@ Namespace Forms
             ' This call is required by the Windows Form Designer.
             InitializeComponent()
 
-            Me.DBConnection = New DatabaseProxy(My.Application.Info.DirectoryPath + "\data.db")
-
             ' Add any initialization after the InitializeComponent() call.  
             'MsgBox(My.Application.Info.DirectoryPath & "\Languages\" & SkyCD.modGlobal.Settings.ReadSetting("Language", , "English") & ".xml", , "language")
             Me.PlugInsSuport.LoadStartupPlugIns(Me)
@@ -760,15 +764,17 @@ Namespace Forms
                         Application.DoEvents()
                     Loop Until I >= Folders.Count
                     I = LBound(Buffer.Items)
+                    Dim transaction = Me.DBConnection.CreateTransaction()
                     Me.DBConnection.Execute("DELETE FROM list WHERE AID = ?", Me.Handle.ToInt64)
                     Dim db_item As Database.Item
                     For Each Item As scdItem In Buffer.Items
                         If Item.Name = "" Then Continue For
-                        db_item = New Database.Item(I, Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size.ToString, Me.Handle.ToInt64)
+                        db_item = New Database.Item(Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size.ToString, Me.Handle.ToInt64)
                         Me.DBConnection.Insert("list", db_item)
                         I = I + 1
-                        If I Mod 3 = 15 Then Application.DoEvents()
+                        If I Mod 3 = 5 Then Application.DoEvents()
                     Next
+                    Me.DBConnection.CommitTransaction(transaction)
                     Me.tvTree.Nodes.Clear()
                     Me.UpdateTree()
                     If Me.tvTree.Nodes.Count > 0 Then
@@ -885,13 +891,19 @@ Namespace Forms
                         Application.DoEvents()
                     Loop Until I >= Folders.Count
                     I = LBound(Buffer.Items)
+                    Dim transaction = Me.DBConnection.CreateTransaction()
                     Me.DBConnection.Execute("DELETE FROM list WHERE AID = ?", Me.Handle.ToInt64)
                     For Each Item As scdItem In Buffer.Items
-                        If Item.Name = "" Then Continue For
-                        Me.DBConnection.Execute("INSERT INTO list (`ID`, `Name`, `ParentID`, `Type`, `Properties`,`Size`, `AID`) VALUES (?, ?, ?, ?, ?,?,?)", I, Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size.ToString, Me.Handle.ToInt64.ToString)
+                        If Item.Name = "" Then
+                            Continue For
+                        End If
+                        Me.DBConnection.Insert("list", New Database.Item(Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size.ToString, Me.Handle.ToInt64.ToString))
                         I = I + 1
-                        If I Mod 3 = 15 Then Application.DoEvents()
+                        If I Mod 3 = 5 Then
+                            Application.DoEvents()
+                        End If
                     Next
+                    Me.DBConnection.CommitTransaction(transaction)
                     Me.tvTree.Nodes.Clear()
                     Me.UpdateTree()
                     Me.tvTree.SelectedNode = Me.tvTree.Nodes.Item(0)

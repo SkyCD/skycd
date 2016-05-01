@@ -239,10 +239,6 @@ start:
         End Set
     End Property
 
-    Private Function GetSelectRezCount(query As String, ParamArray args As Object()) As Integer
-
-    End Function
-
     Public Sub Import()
         Dim I As Integer
         Me.Clear()
@@ -250,7 +246,7 @@ start:
         status.scdEvent = iFileFormat.scdStatus.scdProcedure.scdImporting
         status.scdValue = 0
         RaiseEvent UpdateStatus(status)
-        Dim Count As Integer = GetSelectRezCount("SELECT * FROM list WHERE AID = '" + Me.application_guid + "'")
+        Dim Count As Integer = Me.db.Select(Of Integer)("SELECT count(*) FROM list WHERE AID = ?", Me.application_guid)
         ReDim Me.Items(Count)
         Dim sql As String = "SELECT * FROM list WHERE AID = ?"
         For Each item As Database.Item In Me.db.Select(sql, Me.application_guid)
@@ -275,16 +271,24 @@ start:
         Dim status As iFileFormat.scdStatus
         status.scdEvent = iFileFormat.scdStatus.scdProcedure.scdExporting
         status.scdValue = 0
+        Dim transaction = Me.db.CreateTransaction()
         RaiseEvent UpdateStatus(status)
         Me.db.Execute("DELETE FROM list WHERE AID = ?", Me.application_guid)
         For Each Item As scdItem In Me.Items
-            If Item.Name = "" Then Continue For
-            Me.db.Execute("INSERT INTO list (`ID`, `Name`, `ParentID`, `Type`, `Properties`, `AID`) VALUES (?, ?, ?, ?, ?,?)", I, Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Me.application_guid)
+            If Item.Name = "" Then
+                Continue For
+            End If
+            Try
+                Me.db.Insert("list", New SkyCD.Database.Item(Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Me.application_guid))
+            Catch ex As Exception
+
+            End Try
             I = I + 1
-            If I Mod 3 = 15 Then RaiseEvent NeedDoEvents()
+            RaiseEvent NeedDoEvents()
             status.scdValue = Convert.ToByte(100 / Me.Items.Length * I)
             RaiseEvent UpdateStatus(status)
         Next
+        Me.db.CommitTransaction(transaction)
     End Sub
 
     Public Function GetSupportedFileFormats() As List(Of String) Implements iFileFormat.GetSupportedFileFormats

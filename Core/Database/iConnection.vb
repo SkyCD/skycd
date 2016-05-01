@@ -12,6 +12,10 @@ Namespace Database
 
         Function Insert(table As String, item As Item) As Integer
 
+        Function CreateTransaction() As Object
+        Sub CommitTransaction(ByRef Transaction As Object)
+        Sub RollbackTransaction(ByRef Transaction As Object)
+
     End Interface
 
 End Namespace

@@ -31,7 +31,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>false</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\SkyCD\bin\Debug\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
@@ -43,7 +43,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>false</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\SkyCD\bin\</OutputPath>
+    <OutputPath>..\SkyCD\bin\Release\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
