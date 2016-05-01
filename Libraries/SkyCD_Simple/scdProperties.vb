@@ -1,4 +1,4 @@
-Imports SkyAdvancedFunctionsLibrary
+Imports SkyCD.Libraries.AdvancedFunctions
 
 Public Class scdProperties
 

@@ -15,22 +15,55 @@ Public Class DatabaseProxy
     End Sub
 
     Public Sub Execute(query As String, ParamArray args() As Object) Implements iConnection.Execute
-        With Me.Database.CreateCommand
-            For Each arg As Object In args
-                .Parameters.Add(New SQLiteParameter(DbType.String, arg))
-            Next
-            .CommandText = query
-            .ExecuteNonQuery()
-        End With
+        Dim cmd As SQLiteCommand = Me.CreateCommand(query, args)
+        If Not Me.Database.State = ConnectionState.Open Then
+            Me.Database.Open()
+        End If
+        cmd.ExecuteNonQuery()
+        Me.Database.Close()
     End Sub
 
-    Public Function [Select](query As String, ParamArray args() As Object) As List(Of Item) Implements iConnection.Select
-        Dim ret As New List(Of Item)
+    Public Function Insert(table As String, item As Item) As Integer Implements iConnection.Insert
+        Dim sql As String = "INSERT INTO `" + table + "` ("
+        Dim properties As PropertyInfo() = GetType(Item).GetProperties
+        Dim field_names As New List(Of String)
+        Dim field_values As New List(Of Object)
+        Dim rep As String = ""
+        For Each p As PropertyInfo In properties
+            If Not p.CanRead Then Continue For
+            field_names.Add(p.Name)
+            field_values.Add(p.GetValue(item))
+            rep += "?,"
+        Next
+        If rep.Length > 0 Then
+            rep = rep.Substring(0, rep.Length - 1)
+        Else
+            Return Nothing
+        End If
+        sql += String.Join(",", field_names.ToArray()) + ") VALUES(" + rep + ");"
+        Dim cmd As SQLiteCommand = Me.CreateCommand(sql, field_values.ToArray())
+        If Not Me.Database.State = ConnectionState.Open Then
+            Me.Database.Open()
+        End If
+        Dim ret As Integer = cmd.ExecuteNonQuery()
+        Me.Database.Close()
+        Return ret
+    End Function
+
+    Private Function CreateCommand(query As String, ParamArray args() As Object) As SQLiteCommand
         Dim cmd As New SQLiteCommand(query, Me.Database)
         For Each arg As Object In args
             cmd.Parameters.Add(New SQLiteParameter(DbType.String, arg))
         Next
-        Me.Database.Open()
+        Return cmd
+    End Function
+
+    Public Function [Select](query As String, ParamArray args() As Object) As List(Of Item) Implements iConnection.Select
+        Dim ret As New List(Of Item)
+        Dim cmd As SQLiteCommand = Me.CreateCommand(query, args)
+        If Not Me.Database.State = ConnectionState.Open Then
+            Me.Database.Open()
+        End If
         Dim reader As DbDataReader = cmd.ExecuteReader()
         Dim properties As PropertyInfo() = GetType(Item).GetProperties
         Dim item As Item

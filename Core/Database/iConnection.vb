@@ -10,6 +10,8 @@ Namespace Database
 
         Sub Execute(query As String, ParamArray args() As Object)
 
+        Function Insert(table As String, item As Item) As Integer
+
     End Interface
 
 End Namespace

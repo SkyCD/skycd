@@ -250,3 +250,7 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+*.pdb
+*.exe
+*.Cache
+SkyCD/obj/Debug/SkyCD.vbproj.GenerateResource.Cache

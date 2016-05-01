@@ -109,6 +109,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\SkyCD.Core.vbproj">
+      <Project>{4e89bba3-358a-443c-9e1c-492e1faac150}</Project>
+      <Name>SkyCD.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Libraries\scdStringsLibrary\SkyAdvancedFunctions.vbproj">
       <Project>{A571A7FF-8001-43E3-A1F2-AD0136A6F9FE}</Project>
       <Name>SkyAdvancedFunctions</Name>

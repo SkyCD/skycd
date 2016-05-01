@@ -761,15 +761,19 @@ Namespace Forms
                     Loop Until I >= Folders.Count
                     I = LBound(Buffer.Items)
                     Me.DBConnection.Execute("DELETE FROM list WHERE AID = ?", Me.Handle.ToInt64)
+                    Dim db_item As Database.Item
                     For Each Item As scdItem In Buffer.Items
                         If Item.Name = "" Then Continue For
-                        Me.DBConnection.Execute("INSERT INTO list (`ID`, `Name`, `ParentID`, `Type`, `Properties`,`Size`, `AID`) VALUES (?, ?, ?, ?, ?,?)", I, Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size.ToString, Me.Handle.ToInt64)
+                        db_item = New Database.Item(I, Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size.ToString, Me.Handle.ToInt64)
+                        Me.DBConnection.Insert("list", db_item)
                         I = I + 1
                         If I Mod 3 = 15 Then Application.DoEvents()
                     Next
                     Me.tvTree.Nodes.Clear()
                     Me.UpdateTree()
-                    Me.tvTree.SelectedNode = Me.tvTree.Nodes.Item(0)
+                    If Me.tvTree.Nodes.Count > 0 Then
+                        Me.tvTree.SelectedNode = Me.tvTree.Nodes.Item(0)
+                    End If
                     Adding.Close()
                     'MsgBox(Buffer.Items.Length)
                 ElseIf AddToList.tsbFromInternet.Checked Then

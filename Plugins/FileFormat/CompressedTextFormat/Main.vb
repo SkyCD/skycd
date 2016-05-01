@@ -6,7 +6,7 @@ Public Class Main
     Inherits SkyCD_Simple.skycd_simple
     Implements iFileFormat
 
-    Private db As OleDb.OleDbDataAdapter
+    Private db As Database.iConnection
     Private dm As Boolean = False
     Private application_guid As String = ""
 
@@ -243,11 +243,11 @@ start:
     Public Event NeedDoEvents() Implements iFileFormat.NeedDoEvents
     Public Event DebugWrite(ByVal Msg As Object) Implements iFileFormat.DebugWrite
 
-    Property Database() As OleDb.OleDbDataAdapter Implements iFileFormat.Database
+    Property Database() As Database.iConnection Implements iFileFormat.Database
         Get
             Return Me.db
         End Get
-        Set(ByVal value As OleDb.OleDbDataAdapter)
+        Set(ByVal value As Database.iConnection)
             Me.db = value
         End Set
     End Property
@@ -259,46 +259,26 @@ start:
         status.scdEvent = iFileFormat.scdStatus.scdProcedure.scdImporting
         status.scdValue = 0
         RaiseEvent UpdateStatus(status)
-        Dim Count As Integer = GetSelectRezCount("SELECT * FROM list WHERE AID = '" + Me.application_guid + "'")
+        Dim Count As Integer = Me.db.Select(Of Integer)("SELECT Count(*) FROM list WHERE AID = ?", Me.application_guid)
         ReDim Me.Items(Count)
-        Me.db.SelectCommand.CommandText = "SELECT * FROM list WHERE AID = '" + Me.application_guid + "'"
-        Dim rez As OleDb.OleDbDataReader = Me.db.SelectCommand.ExecuteReader()
-        Do While rez.Read()
-            I = Val(rez.Item("ID"))
-            If rez.Item("Type").ToString.ToLower = "scdfile" Then
+        Dim sql As String = "SELECT * FROM list WHERE AID = ?"
+        For Each item As Database.Item In Me.db.Select(sql, Me.application_guid)
+            I = Val(item.ID)
+            If item.Type.ToString.ToLower = "scdfile" Then
                 Me.Items(I).ItemType = scdItemType.scdFile
             Else
                 Me.Items(I).ItemType = scdItemType.scdUnknown
             End If
-            Me.Items(I).AdvancedInfo = New scdProperties(rez.Item("Properties").ToString)
-            Me.Items(I).Name = rez.Item("Name").ToString
-            'Me.Items(I).Size = Val(rez.Item("Size"))
-            Me.Items(I).ParentID = Val(rez.Item("ParentID"))
+            Me.Items(I).AdvancedInfo = New scdProperties(item.Properties.ToString)
+            Me.Items(I).Name = item.Name.ToString
+            'Me.Items(I).Size = item.Size
+            Me.Items(I).ParentID = item.ParentID
             If I Mod 3 = 15 Then RaiseEvent NeedDoEvents()
-        Loop
-        rez.Close()
-        rez.Dispose()
+        Next
         status.scdValue = 100
         status.scdEvent = iFileFormat.scdStatus.scdProcedure.scdDone
         RaiseEvent UpdateStatus(status)
-        rez.Close()
     End Sub
-
-    Private Function GetSelectRezCount(ByVal sql As String) As Integer
-        Dim rez As OleDb.OleDbDataReader
-        Dim dbx As New OleDb.OleDbDataAdapter
-        dbx = Me.db
-        dbx.SelectCommand.CommandText = sql
-        rez = dbx.SelectCommand.ExecuteReader()
-        Dim Count As Integer = 0
-        Do While rez.Read()
-            Count = Count + 1
-            If Count Mod 30 = 0 Then RaiseEvent NeedDoEvents()
-        Loop
-        rez.Close()
-        rez.Dispose()
-        Return Count
-    End Function
 
     Sub Export()
         Dim I As Integer = LBound(Me.Items)
@@ -306,21 +286,19 @@ start:
         status.scdEvent = iFileFormat.scdStatus.scdProcedure.scdExporting
         status.scdValue = 0
         RaiseEvent UpdateStatus(status)
-        Me.db.DeleteCommand.CommandText = "DELETE FROM list WHERE AID = '" + Me.application_guid + "'"
-        Me.db.DeleteCommand.ExecuteNonQuery()
+        Me.db.Execute("DELETE FROM list WHERE AID = ?", Me.application_guid)
         For Each Item As scdItem In Me.Items
             If Item.Name = "" Then Continue For
-            Me.db.InsertCommand.CommandText = "INSERT INTO list (`ID`, `Name`, `ParentID`, `Type`, `Properties`, `AID`) VALUES ('" + I.ToString + "', '" + AddSlashes(Item.Name) + "', '" + Item.ParentID.ToString + "', '" + Item.ItemType.ToString + "', '" + AddSlashes(Item.AdvancedInfo.All.ToString) + "','" + Me.application_guid + "')"
+            Me.db.Insert("list", New SkyCD.Database.Item(I, Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Me.application_guid))
             I = I + 1
             If I Mod 3 = 15 Then RaiseEvent NeedDoEvents()
-            Me.db.InsertCommand.ExecuteScalar()
             status.scdValue = Convert.ToByte(100 / Me.Items.Length * I)
             RaiseEvent UpdateStatus(status)
         Next
     End Sub
 
-    Public Function GetSupportedFileFormats() As Collection Implements iFileFormat.GetSupportedFileFormats
-        Dim Col As New Collection
+    Public Function GetSupportedFileFormats() As List(Of String) Implements iFileFormat.GetSupportedFileFormats
+        Dim Col As New List(Of String)
         Col.Add("SkyCD Compressed Text Format|*.cscd")
         Return Col
     End Function

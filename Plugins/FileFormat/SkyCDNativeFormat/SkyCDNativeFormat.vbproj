@@ -20,7 +20,7 @@
     </SccProvider>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>C:\Users\Raimondas\Documents\GitHub\SkyCD\Backup1\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>C:\Users\Raimondas\Documents\GitHub\SkyCD\Backup\</UpgradeBackupLocation>
     <OldToolsVersion>14.0</OldToolsVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />

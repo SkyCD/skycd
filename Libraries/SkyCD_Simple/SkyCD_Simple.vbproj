@@ -52,10 +52,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SkyAdvancedFunctionsLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SkyCD\SkyAdvancedFunctionsLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +101,10 @@
     <ProjectReference Include="..\..\Core\SkyCD.Core.vbproj">
       <Project>{4e89bba3-358a-443c-9e1c-492e1faac150}</Project>
       <Name>SkyCD.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\scdStringsLibrary\SkyAdvancedFunctions.vbproj">
+      <Project>{a571a7ff-8001-43e3-a1f2-ad0136a6f9fe}</Project>
+      <Name>SkyAdvancedFunctions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
