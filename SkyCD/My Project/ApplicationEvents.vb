@@ -1,3 +1,5 @@
+Imports System.IO
+
 Namespace My
 
     'The following events are available for MyApplication
@@ -12,7 +14,7 @@ Namespace My
 
         Public Function OpenNew(Optional ByVal FileName As String = "") As Form
             'On Error Resume Next
-            Dim Fm As New Form1()
+            Dim Fm As New Forms.Main()
             Fm.InitializeLifetimeService()
             Application.DoEvents()
             Fm.Show()
@@ -22,29 +24,29 @@ Namespace My
             Fm.RefreshData()
             Application.DoEvents()
             If FileName.Length > 0 Then
-                Dim FI As New System.IO.FileInfo(FileName)
+                Dim FI As New FileInfo(FileName)
                 If FI.Exists Then Fm.LoadFile(FileName)
             End If
             Return Fm
         End Function
 
-        Private Sub MyApplication_StartupNextInstance(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.StartupNextInstanceEventArgs) Handles Me.StartupNextInstance
-            Global.SkyCD.Startup.Open()
+        Private Sub MyApplication_StartupNextInstance(ByVal sender As Object, ByVal e As ApplicationServices.StartupNextInstanceEventArgs) Handles Me.StartupNextInstance
+            Open()
             Exit Sub
             If e.CommandLine.Count > 0 Then
                 Me.OpenNew(e.CommandLine.Item(0))
             Else
                 Me.OpenNew()
             End If
-            'Dim I As Integer, Fl As System.IO.FileInfo
+            'Dim I As Integer, Fl As FileInfo
             '   For I = 0 To e.CommandLine.Count - 1
-            '      Fl = New System.IO.FileInfo(e.CommandLine.Item(I))
+            '      Fl = New FileInfo(e.CommandLine.Item(I))
             '     If Fl.Exists Then Me.OpenNew(Fl.FullName)
             'Next
         End Sub
 
 
-        Private Sub MyApplication_UnhandledException(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
+        Private Sub MyApplication_UnhandledException(ByVal sender As Object, ByVal e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
             MsgBox(modGlobal.Translate(Me, e.Exception.ToString), MsgBoxStyle.Critical, modGlobal.Translate(Me, "Error"))
         End Sub
     End Class

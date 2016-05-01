@@ -1,7 +1,9 @@
+Imports SkyCD.App.Forms
+
 Public Module Startup
 
-    Function Open() As Form1
-        Dim Km As New Form1
+    Function Open() As Main
+        Dim Km As New Main
         Km.Show()
         Dim FileName As String = Nothing
         If My.Application.CommandLineArgs.Count > 0 Then _

@@ -1,7 +1,7 @@
 Module modGlobal
 
     Public Settings As New SCD_XSettings(My.Application.Info.AssemblyName)
-    Public Language As New SkyCD.clsXMLCfgFile(My.Application.Info.DirectoryPath & "\Languages\" & Settings.ReadSetting("Language", , "English") & ".xml", "language")
+    Public Language As New clsXMLCfgFile(My.Application.Info.DirectoryPath & "\Languages\" & Settings.ReadSetting("Language", , "English") & ".xml", "language")
     Public CanCreateForms As Boolean = True
 
     Public ReadOnly Property Translate(ByVal Obj As Object, ByVal Text As String, Optional ByVal DefaultValue As String = Nothing) As String

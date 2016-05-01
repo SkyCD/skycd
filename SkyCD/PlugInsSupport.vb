@@ -1,3 +1,6 @@
+Imports SkyCD.App.Forms
+Imports SkyCD.Libraries.AdvancedFunctions.File
+
 Public Class PlugInsSupport
     'Inherits System.ComponentModel.Component
 
@@ -7,21 +10,21 @@ Public Class PlugInsSupport
 
     Public Property Path() As String
         Get
-            Return SkyCD.modGlobal.Settings.ReadSetting("PlugInsPath", , My.Application.Info.DirectoryPath + "\Plug-Ins\")
+            Return modGlobal.Settings.ReadSetting("PlugInsPath", , My.Application.Info.DirectoryPath + "\Plug-Ins\")
         End Get
         Set(ByVal value As String)
             'MsgBox(Path)
-            SkyCD.modGlobal.Settings.WriteSetting("PlugInsPath", value)
+            modGlobal.Settings.WriteSetting("PlugInsPath", value)
         End Set
     End Property
 
-    Public Function GetPlugIns() As PlugInsSupport.PlugInInfo()
+    Public Function GetPlugIns() As PlugInInfo()
         Dim Kx As String(,) = Me.Settings.ReadSettings("PlugIns")
         If IsNothing(Kx) Then Return Nothing
         Dim I As Integer = UBound(Kx)
-        Dim Mas(I) As PlugInsSupport.PlugInInfo
+        Dim Mas(I) As PlugInInfo
         For I = LBound(Kx) To UBound(Kx)
-            Mas(I) = New PlugInsSupport.PlugInInfo(Kx(I, 0))
+            Mas(I) = New PlugInInfo(Kx(I, 0))
         Next
         Return Mas
     End Function
@@ -30,7 +33,7 @@ Public Class PlugInsSupport
         Return Settings.ReadSetting("PlugIn." + Name, "FileName", "") <> ""
     End Function
 
-    Public Sub LoadStartupPlugIns(ByVal FormX As Form1)
+    Public Sub LoadStartupPlugIns(ByVal FormX As Main)
         Try
             Dim Kx As String(,) = Me.Settings.ReadSettings("StartUp")
             Dim I As Integer = UBound(Kx)
@@ -73,7 +76,7 @@ Public Class PlugInsSupport
             Settings.WriteSetting("PlugIn." + Dll.GetName.Name, "HasConfig", Instance.HasConfig)
             Settings.WriteSetting("PlugIn." + Dll.GetName.Name, "ImageRuntimeVersion", Dll.ImageRuntimeVersion)
             Settings.WriteSetting("PlugIn." + Dll.GetName.Name, "ProcessorArchitecture", Dll.GetName.ProcessorArchitecture)
-            Settings.WriteSetting("PlugIn." + Dll.GetName.Name, "Type", 2)            
+            Settings.WriteSetting("PlugIn." + Dll.GetName.Name, "Type", 2)
         End If
         Instance = Nothing
     End Sub
@@ -139,7 +142,7 @@ Public Class PlugInsSupport
         Dim C As New Collection
         Dim I As Integer
         For I = LBound(data) To UBound(data)
-            If SkyAdvancedFunctionsLibrary.File.GetFileExtension(data(I, 1)) = SkyAdvancedFunctionsLibrary.File.GetFileExtension(FileName) Then
+            If GetFileExtension(data(I, 1)) = GetFileExtension(FileName) Then
                 'MsgBox(SkyAdvancedFunctionsLibrary.File.GetFileExtension(data(I, 1)))
                 If InStr(Settings.ReadSetting("CanDo", "FileFormat." & data(I, 0)).ToString.ToLower, "read") > -1 Then
                     C.Add(data(I, 0))

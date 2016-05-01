@@ -106,6 +106,9 @@ Please reinstall application.</CantfindhelpfilePleasereinstallapplication>
     <support>support</support>
     <andYou>and You!</andYou>
     <About>About</About>
+    <Author>Author {0}</Author>
+    <ThanksTo>Thanks To:</ThanksTo>
+    <Authors>Authors: {0}</Authors>
   </About>
   <frmAdding>
     <Reading>Reading '{0}'...</Reading>
@@ -151,4 +154,69 @@ Please reinstall application.</CantfindhelpfilePleasereinstallapplication>
     <FileFormatSupport>File Format Support</FileFormatSupport>
     <InterfacePlugIn>Interface PlugIn</InterfacePlugIn>
   </PlugInInfo>
+  <Main>
+    <File>&amp;File</File>
+    <New>&amp;New</New>
+    <Open>&amp;Open...</Open>
+    <Save>&amp;Save</Save>
+    <SaveAs>Save &amp;As...</SaveAs>
+    <Properties>&amp;Properties...</Properties>
+    <Exit>&amp;Exit</Exit>
+    <Edit>&amp;Edit</Edit>
+    <Add>Add...</Add>
+    <Delete>&amp;Delete</Delete>
+    <View>&amp;View</View>
+    <StatusBar>&amp;StatusBar</StatusBar>
+    <Tiles>&amp;Tiles</Tiles>
+    <SmallIcons>Small &amp;Icons</SmallIcons>
+    <LargeIcons>L&amp;arge Icons</LargeIcons>
+    <List>&amp;List</List>
+    <Details>&amp;Details</Details>
+    <ArrangeIconsBy>Arrange Icons By</ArrangeIconsBy>
+    <Name>&amp;Name</Name>
+    <Type>&amp;Type</Type>
+    <Refresh>&amp;Refresh</Refresh>
+    <Tools>&amp;Tools</Tools>
+    <Options>&amp;Options...</Options>
+    <Help>&amp;Help</Help>
+    <Contents>&amp;Contents</Contents>
+    <HomePage>&amp;Home Page</HomePage>
+    <About>&amp;About...</About>
+    <Expand>&amp;Expand</Expand>
+    <Collapse>C&amp;ollapse</Collapse>
+    <Done>Done.</Done>
+    <CantfindhelpfilePleasereinstallapplication>Can't find help file.
+
+Please reinstall application.</CantfindhelpfilePleasereinstallapplication>
+    <Error>Error</Error>
+    <ProjectwebsiteinSourceForgeNET>Project website in &amp;SourceForge.NET</ProjectwebsiteinSourceForgeNET>
+    <ProjectareainGitHub>Project area in &amp;GitHub</ProjectareainGitHub>
+    <Preparingdatabaseformodifications>Preparing database for modifications...</Preparingdatabaseformodifications>
+  </Main>
+  <AddToList>
+    <AddToList>Add To List</AddToList>
+    <SelectFolder>Select Folder:</SelectFolder>
+    <IncludeSubfolders>Include Subfolders</IncludeSubfolders>
+    <EnterInternetaddress>Enter Internet address:</EnterInternetaddress>
+    <Selectdrive>Select drive:</Selectdrive>
+    <IncludeMediaInfo>Include Media Info</IncludeMediaInfo>
+    <Selectfullnameforselectedmedia>Select full name for selected media:</Selectfullnameforselectedmedia>
+    <ToselectedMediaFolder>To selected Media/Folder</ToselectedMediaFolder>
+    <AsnewMedia>As new Media</AsnewMedia>
+    <Allcontentsadd>All contents add...</Allcontentsadd>
+    <IncludeExtendedInfo>Include Extended Info</IncludeExtendedInfo>
+    <Misc>Misc</Misc>
+    <Cancel>Cancel</Cancel>
+    <OK>OK</OK>
+    <FromInternet>From Internet</FromInternet>
+    <FromMedia>From Media</FromMedia>
+    <FromFolder>From Folder</FromFolder>
+  </AddToList>
+  <Adding>
+    <Reading>Reading '{0}'...</Reading>
+  </Adding>
+  <Options>
+    <BecauseyouhavechangedsomesettingthisapplicationmustrestartDoyouwantrestartnow>Because you have changed some setting, this application must restart. Do you want restart now?</BecauseyouhavechangedsomesettingthisapplicationmustrestartDoyouwantrestartnow>
+    <Restart>Restart</Restart>
+  </Options>
 </language>
