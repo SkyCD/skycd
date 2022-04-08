@@ -1,36 +1,37 @@
-Imports SkyCD.Libraries.AdvancedFunctions
+Imports SkyCD.Controls
+Imports SkyCD.AdvancedFunctions
 
 Namespace Forms
 
-<CompilerServices.DesignerGenerated()>
-Partial Public Class About
-    Inherits Form
+    <CompilerServices.DesignerGenerated()>
+    Partial Public Class About
+        Inherits Form
 
-    Friend WithEvents tmrFX As Timer
-    Friend WithEvents DrawingBox1 As DrawingBox
+        Friend WithEvents tmrFX As Timer
+        Friend WithEvents DrawingBox1 As DrawingBox
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing AndAlso components IsNot Nothing Then
-            components.Dispose()
-        End If
-        MyBase.Dispose(disposing)
-    End Sub
+        'Form overrides dispose to clean up the component list.
+        <System.Diagnostics.DebuggerNonUserCode()>
+        Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
 
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+        'Required by the Windows Form Designer
+        Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <DebuggerStepThrough()>
-    Private Sub InitializeComponent()
+        'NOTE: The following procedure is required by the Windows Form Designer
+        'It can be modified using the Windows Form Designer.  
+        'Do not modify it using the code editor.
+        <DebuggerStepThrough()>
+        Private Sub InitializeComponent()
             Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(About))
             Me.tmrFX = New System.Windows.Forms.Timer(Me.components)
-            Me.DrawingBox1 = New SkyCD.Libraries.AdvancedFunctions.DrawingBox()
+            Me.DrawingBox1 = New DrawingBox()
             Me.SuspendLayout()
             '
             'tmrFX
@@ -70,4 +71,4 @@ Partial Public Class About
 
     End Class
 
-End namespace
+End Namespace

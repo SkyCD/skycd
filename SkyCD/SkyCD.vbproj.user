@@ -26,4 +26,27 @@
     </StartWorkingDirectory>
     <StartArguments>"C:\Documents and Settings\Administrator\Desktop\SkyCDrelease34unfinished\test.scd"</StartArguments>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Forms\About.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Adding.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddToList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Main.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Options.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Properties.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>
