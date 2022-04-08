@@ -29,12 +29,15 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>C:\Documents and Settings\Administrator\Desktop\Install\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -55,9 +58,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -137,7 +137,6 @@
     <Compile Include="Forms\About.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Class1.vb" />
     <Compile Include="clsXMLCfgFile.vb" />
     <Compile Include="Forms\Main.vb">
       <SubType>Form</SubType>
@@ -181,6 +180,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -364,20 +364,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libraries\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\SkyCD.Core.vbproj">
-      <Project>{4e89bba3-358a-443c-9e1c-492e1faac150}</Project>
-      <Name>SkyCD.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Libraries\scdStringsLibrary\SkyAdvancedFunctions.vbproj">
-      <Project>{a571a7ff-8001-43e3-a1f2-ad0136a6f9fe}</Project>
-      <Name>SkyAdvancedFunctions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Libraries\SkyCD_Simple\SkyCD_Simple.vbproj">
-      <Project>{a5ce10d2-8d0e-403c-b6b5-ecc5045eee90}</Project>
-      <Name>SkyCD_Simple</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
