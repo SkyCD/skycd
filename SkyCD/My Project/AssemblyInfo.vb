@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("SkyCD")> 
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("")>
+<Assembly: AssemblyProduct("SkyCD")>
 <Assembly: AssemblyCopyright("")>
 <Assembly: AssemblyTrademark("")> 
 
