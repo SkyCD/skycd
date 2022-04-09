@@ -20,7 +20,7 @@ Namespace Forms
         Private Sub tmrFX_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles tmrFX.Tick
             Dim Matrix As New Matrix()
             Me.DrawingBox1.DeleteLayer(Me.msglayer_nr)
-            Me.DrawingBox1.ForeColor = Color.FromArgb(255 - jc * 2.4, Color.White)
+            Me.DrawingBox1.ForeColor = Color.FromArgb(CInt(255 - jc * 2.4), Color.White)
             If jc > 90 Then
                 Me.DrawingBox1.PenColor = Color.FromArgb(0, Me.DrawingBox1.ForeColor)
             Else
@@ -36,14 +36,14 @@ Namespace Forms
             End If
             For I = jy1 To jy2 - 1
                 If Me.txt.Item(I).ToString.Substring(0, 2) <> "//" Then
-                    Text = Text + Me.txt.Item(I) + vbCrLf
+                    Text = Text + Me.txt.Item(I).ToString + vbCrLf
                     kc = kc + 1
                 End If
             Next
             If tw Then
-                Text = Text & Me.txt.Item(jy2).ToString.Substring(0, jx)
+                Text = Text & Me.txt.Item(jy2).ToString.Substring(0, CInt(jx))
             Else
-                Text = Text & Me.txt.Item(jy2)
+                Text = Text & Me.txt.Item(jy2).ToString
                 jx = Me.txt.Item(jy2).ToString.Length + 1
             End If
             With Me.DrawingBox1.Item(Me.msglayer_nr)
@@ -54,11 +54,11 @@ Namespace Forms
                 jy2 = jy2 + 1
                 jx = 0
             End If
-            If Me.txt.Item(jy2) = "//textwrite" Then
+            If Me.txt.Item(jy2).ToString = "//textwrite" Then
                 Me.tw = True
                 jy2 = jy2 + 1
             End If
-            If Me.txt.Item(jy2) = "//newpage" Then
+            If Me.txt.Item(jy2).ToString = "//newpage" Then
                 If jc < 100 Then
                     jy2 = jy2 - 1
                     jx = Me.txt.Item(jy2).ToString.Length
@@ -108,7 +108,7 @@ Namespace Forms
 
         Dim schange As Boolean = False
         Private Sub DrawingBox1_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles DrawingBox1.KeyDown
-            If modGlobal.Settings.ReadSetting("MouseWheel.SlowMotion.Effect", "About", False) Then
+            If Convert.ToBoolean(modGlobal.Settings.ReadSetting("MouseWheel.SlowMotion.Effect", "About", False)) Then
                 If e.KeyCode = Keys.ShiftKey Then schange = True
             End If
         End Sub
@@ -196,12 +196,12 @@ Namespace Forms
             Dim frmat As New StringFormat
             frmat.Alignment = StringAlignment.Center
             With Me.DrawingBox1.Item(Me.DrawingBox1.AddLayer())
-                .Path.AddString(ApplicationTitle, Me.DrawingBox1.Font.FontFamily, Me.DrawingBox1.Font.Style, 21, New PointF(Me.DrawingBox1.Width / 2, 20), frmat)
+                .Path.AddString(ApplicationTitle, Me.DrawingBox1.Font.FontFamily, Me.DrawingBox1.Font.Style, 21, New PointF(Convert.ToSingle(Me.DrawingBox1.Width / 2), 20), frmat)
             End With
             Randomize()
-            Dim r As Single = Math.Sqrt(Me.DrawingBox1.Width ^ 2 + Me.DrawingBox1.Height ^ 2)
+            Dim r As Single = CInt(Math.Sqrt(Me.DrawingBox1.Width ^ 2 + Me.DrawingBox1.Height ^ 2))
             With Me.DrawingBox1.Item(Me.background_nr).Path
-                For I = 0 To modGlobal.Settings.ReadSetting("Background.Points", "About", 2100)
+                For I = 0 To CInt(modGlobal.Settings.ReadSetting("Background.Points", "About", 2100))
                     .AddPie(Math.Abs(Fix(Rnd() * (r * 2))) - r, Math.Abs(Fix(Rnd() * (r * 2))) - r, 1, 1, 0, 360)
                 Next
             End With
@@ -267,7 +267,7 @@ Namespace Forms
             Static Tarpas As Single = Me.DrawingBox1.CreateGraphics.MeasureString(" ", Me.Font, New PointF(20, 20), New StringFormat()).ToSize.Width
             Dim Ilgis As Single = Me.DrawingBox1.CreateGraphics.MeasureString(Text, Me.Font, New PointF(0, 0), New StringFormat()).Width
             Dim Mas() As String = Text.Split(" ")
-            Dim L As Long = 1, K As Long = Math.Round(Math.Abs((Me.DrawingBox1.Width - 40 - Ilgis) / Tarpas), MidpointRounding.AwayFromZero) - 2
+            Dim L As Long = 1, K As Long = Convert.ToInt64(Math.Round(Math.Abs((DrawingBox1.Width - 40 - Ilgis) / Tarpas), MidpointRounding.AwayFromZero) - 2)
             Dim M As Integer
             Do
                 For M = 0 To Mas.Length - 3

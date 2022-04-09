@@ -140,42 +140,42 @@ Public Class AddToList
     End Sub
 
     Private Sub frmAddToList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Select Case Me.Settings.ReadSetting("Selected.Tab", "AddToListForm", 0)
-            Case 2
-                Me.tsbFromFolder.Checked = False
-                Me.tsbFromInternet.Checked = True
-                Me.tsbFromCDROM.Checked = False
-                Me.pnlFromFolder.Visible = False
-                Me.pnlFromMedia.Visible = False
-                Me.pnlFromInternet.Visible = True
-            Case 1
-                Me.tsbFromFolder.Checked = True
-                Me.tsbFromInternet.Checked = False
-                Me.tsbFromCDROM.Checked = False
-                Me.pnlFromFolder.Visible = True
-                Me.pnlFromMedia.Visible = False
-                Me.pnlFromInternet.Visible = False
-            Case Else
-                Me.tsbFromFolder.Checked = False
-                Me.tsbFromInternet.Checked = False
-                Me.tsbFromCDROM.Checked = True
-                Me.pnlFromFolder.Visible = False
-                Me.pnlFromMedia.Visible = True
-                Me.pnlFromInternet.Visible = False
-        End Select
-        Me.txtEnterInternetAdress.Text = Me.Settings.ReadSetting("LastInternetAdress", "AddToListForm")        
-        Me.txtMediaName.Text = Me.Settings.ReadSetting("LastMediaName", "AddToListForm")
-        Me.txtSelexc.Text = Me.Settings.ReadSetting("LastFolder", "AddToListForm")
-        Me.txtEnterInternetAdress.SelectionStart = Me.txtEnterInternetAdress.Text.Length
+            Select Case CInt(Me.Settings.ReadSetting("Selected.Tab", "AddToListForm", 0))
+                Case 2
+                    Me.tsbFromFolder.Checked = False
+                    Me.tsbFromInternet.Checked = True
+                    Me.tsbFromCDROM.Checked = False
+                    Me.pnlFromFolder.Visible = False
+                    Me.pnlFromMedia.Visible = False
+                    Me.pnlFromInternet.Visible = True
+                Case 1
+                    Me.tsbFromFolder.Checked = True
+                    Me.tsbFromInternet.Checked = False
+                    Me.tsbFromCDROM.Checked = False
+                    Me.pnlFromFolder.Visible = True
+                    Me.pnlFromMedia.Visible = False
+                    Me.pnlFromInternet.Visible = False
+                Case Else
+                    Me.tsbFromFolder.Checked = False
+                    Me.tsbFromInternet.Checked = False
+                    Me.tsbFromCDROM.Checked = True
+                    Me.pnlFromFolder.Visible = False
+                    Me.pnlFromMedia.Visible = True
+                    Me.pnlFromInternet.Visible = False
+            End Select
+            Me.txtEnterInternetAdress.Text = Me.Settings.ReadSetting("LastInternetAdress", "AddToListForm").ToString
+            Me.txtMediaName.Text = Me.Settings.ReadSetting("LastMediaName", "AddToListForm").ToString
+            Me.txtSelexc.Text = Me.Settings.ReadSetting("LastFolder", "AddToListForm").ToString
+            Me.txtEnterInternetAdress.SelectionStart = Me.txtEnterInternetAdress.Text.Length
         Me.txtMediaName.SelectionStart = Me.txtMediaName.Text.Length
         Me.txtSelexc.SelectionStart = Me.txtSelexc.Text.Length
-        Me.chkIncludeExtendedInfo.Checked = Me.Settings.ReadSetting("IncludeExtendedInfo", "AddToListForm", True)
-        Me.chkIncludeMediaInfo.Checked = Me.Settings.ReadSetting("IncludeMediaInfo", "AddToListForm", True)
-        Me.chkIncludeSubFolders.Checked = Me.Settings.ReadSetting("IncludeSubFolders", "AddToListForm", True)
-        Me.rbAllContentAddAsNewMedia.Checked = Me.Settings.ReadSetting("AllContentAddAsNewMedia", "AddToListForm", True)
-        Me.rbAllContentAddToSelectedMediaFolder.Checked = Me.Settings.ReadSetting("AllContentAddToSelectedMediaFolder", "AddToListForm", False)
-        Me.cmbDrives.SelectedText = Me.Settings.ReadSetting("Selected Drive", "AddToListForm", Me.cmbDrives.Text)
-    End Sub
+            Me.chkIncludeExtendedInfo.Checked = Convert.ToBoolean(Settings.ReadSetting("IncludeExtendedInfo", "AddToListForm", True))
+            Me.chkIncludeMediaInfo.Checked = Convert.ToBoolean(Me.Settings.ReadSetting("IncludeMediaInfo", "AddToListForm", True))
+            Me.chkIncludeSubFolders.Checked = Convert.ToBoolean(Me.Settings.ReadSetting("IncludeSubFolders", "AddToListForm", True))
+            Me.rbAllContentAddAsNewMedia.Checked = Convert.ToBoolean(Me.Settings.ReadSetting("AllContentAddAsNewMedia", "AddToListForm", True))
+            Me.rbAllContentAddToSelectedMediaFolder.Checked = Convert.ToBoolean(Me.Settings.ReadSetting("AllContentAddToSelectedMediaFolder", "AddToListForm", False))
+            Me.cmbDrives.SelectedText = Me.Settings.ReadSetting("Selected Drive", "AddToListForm", Me.cmbDrives.Text).ToString
+        End Sub
 
     Private Sub cmdSelectFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSelectFolder.Click
         Dim ms As New FolderBrowserDialog()

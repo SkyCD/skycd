@@ -1,10 +1,12 @@
-Imports SkyCD.AdvancedFunctions
 Imports SkyCD.AdvancedFunctions.File
+Imports SkyCD.AdvancedFunctions.Network.FTP.FTPclient
+Imports SkyCD.AdvancedFunctions.Network.FTP.FTPdirectory
 Imports SkyCD.Simple
 Imports SkyCD.Simple.skycd_simple
 Imports System.IO
 Imports SkyCD.App.Plugins
 Imports Convert2 = SkyCD.AdvancedFunctions.Convert
+Imports SkyCD.AdvancedFunctions.Network.FTP
 
 Namespace Forms
 
@@ -124,12 +126,12 @@ Namespace Forms
             Me.DBConnection = New DatabaseProxy(My.Application.Info.DirectoryPath + "\data.db")
             ''Me.lvBrowse.DataBindings.Add()
 
-            Me.Left = modGlobal.Settings.ReadSetting("Left", "Window", Me.Left)
-            Me.Top = modGlobal.Settings.ReadSetting("Top", "Window", Me.Top)
-            Me.Width = modGlobal.Settings.ReadSetting("Width", "Window", Me.Width)
-            Me.Height = modGlobal.Settings.ReadSetting("Height", "Window", Me.Height)
+            Me.Left = CInt(modGlobal.Settings.ReadSetting("Left", "Window", Me.Left))
+            Me.Top = CInt(modGlobal.Settings.ReadSetting("Top", "Window", Me.Top))
+            Me.Width = CInt(modGlobal.Settings.ReadSetting("Width", "Window", Me.Width))
+            Me.Height = CInt(modGlobal.Settings.ReadSetting("Height", "Window", Me.Height))
 
-            Me.StatusStrip1.Visible = modGlobal.Settings.ReadSetting("StatusBar", "Window", Me.StatusStrip1.Visible)
+            Me.StatusStrip1.Visible = System.Convert.ToBoolean(modGlobal.Settings.ReadSetting("StatusBar", "Window", Me.StatusStrip1.Visible))
             Me.StatusBarToolStripMenuItem.Checked = Me.StatusStrip1.Visible
 
             Select Case modGlobal.Settings.ReadSetting("ListView/View", "Window", "largeicon").ToString.ToLower
@@ -170,7 +172,7 @@ Namespace Forms
                     Me.lvBrowse.View = View.LargeIcon
             End Select
 
-            Select Case modGlobal.Settings.ReadSetting("ListView/SortBy", "Window", "name")
+            Select Case modGlobal.Settings.ReadSetting("ListView/SortBy", "Window", "name").ToString
                 Case "name"
                     Me.FileNameToolStripMenuItem.Checked = True
                     Me.TypeToolStripMenuItem.Checked = False
@@ -207,7 +209,7 @@ Namespace Forms
             Me.PlugInsSuport.UpdatePlugInsList()
             ofdOpen.Filter = Me.PlugInsSuport.GetSupportedFileFormatsForRead()
             ofdOpen.Title = Translate(ofdOpen, "Open")
-            ofdOpen.FilterIndex = modGlobal.Settings.ReadSetting("FilterIndex", "OpenDialog", 1)
+            ofdOpen.FilterIndex = CInt(modGlobal.Settings.ReadSetting("FilterIndex", "OpenDialog", 1))
             dr = ofdOpen.ShowDialog()
             If dr = DialogResult.Cancel Then Exit Sub
             'Me.FileStream = me.PlugInsSuport.GetHandlerForFile   System.Reflection.Assembly.LoadFrom(My.Application.Info.DirectoryPath & "\..\Plug-Ins\FileSupport_TextFormat.dll").CreateInstance("Main", True)
@@ -285,19 +287,19 @@ Namespace Forms
                     Case "scdFile"
                         Ext = GetFileExtension(item.Name)
                         Nfo = New scdProperties(item.Properties)
-                        tvar = Me.imlBrowseIcons.Images.IndexOfKey(item.Type & "/../" & item.Name)
+                        tvar = Me.imlBrowseIcons.Images.IndexOfKey(item.Type & "/../" & item.Name).ToString
                         If Nfo.Item("Icon").ToString <> "" Then
-                            If tvar < 0 Then Me.imlBrowseIcons.Images.Add(tvar, GetFileIcon3(Nfo.Item("Icon").ToString))
-                            Me.lvBrowse.Items.Add(item.ID.ToString, item.Name, item.Type & "/../" & item.Name).SubItems.Add(Convert2.Long2Size(Nfo.Item("Size")))
+                            If System.Convert.ToDouble(tvar) < 0 Then Me.imlBrowseIcons.Images.Add(tvar, GetFileIcon3(Nfo.Item("Icon").ToString))
+                            Me.lvBrowse.Items.Add(item.ID.ToString, item.Name, item.Type & "/../" & item.Name).SubItems.Add(Convert2.Long2Size(DirectCast(Nfo.Item("Size"), Long)))
                         Else
                             If Me.imlBrowseIcons.Images.IndexOfKey(item.Type & "/" & Ext) < 0 Then
                                 Me.imlBrowseIcons.Images.Add(item.Type & "/" & Ext, GetFileIcon3(item.Name.ToString))
                             End If
-                            Me.lvBrowse.Items.Add(item.ID.ToString, item.Name, item.Type + "/" + Ext).SubItems.Add(Convert2.Long2Size(Val(Nfo.Item("Size"))))
+                            Me.lvBrowse.Items.Add(item.ID.ToString, item.Name, item.Type + "/" + Ext).SubItems.Add(Convert2.Long2Size(DirectCast(Nfo.Item("Size"), Long)))
                         End If
                     Case Else
                         If Not Me.imlBrowseIcons.Images.ContainsKey(item.Type) Then
-                            Me.imlBrowseIcons.Images.Add(item.Type, My.Resources.NeededIcons.ResourceManager.GetObject(item.Type))
+                            Me.imlBrowseIcons.Images.Add(item.Type, DirectCast(My.Resources.NeededIcons.ResourceManager.GetObject(item.Type), Image))
                         End If
                         Me.lvBrowse.Items.Add(item.ID.ToString, item.Name, item.Type)
                 End Select
@@ -335,7 +337,7 @@ Namespace Forms
             Me.tsProgressBar.Style = ProgressBarStyle.Marquee
             For Each item As Database.Item In Me.DBConnection.Select(sql, ParentID, "scdFile", Me.Handle.ToInt64)
                 If Not Me.imlTreeIcons.Images.ContainsKey(item.Type) Then
-                    Me.imlTreeIcons.Images.Add(item.Type, My.Resources.NeededIcons.ResourceManager.GetObject(item.Type))
+                    Me.imlTreeIcons.Images.Add(item.Type, DirectCast(My.Resources.NeededIcons.ResourceManager.GetObject(item.Type), Image))
                 End If
                 If ParentID = -1 Then
                     Me.tvTree.Nodes.Add(item.ID.ToString, item.Name, item.Type, item.Type).EnsureVisible()
@@ -353,7 +355,7 @@ Namespace Forms
                 tnode = tnodes(LBound(tnodes))
                 For Each item As Database.Item In Me.DBConnection.Select(sql, This.ToString, "scdFile", Me.Handle.ToInt64)
                     If Not Me.imlTreeIcons.Images.ContainsKey(item.Type) Then
-                        Me.imlTreeIcons.Images.Add(item.Type, My.Resources.NeededIcons.ResourceManager.GetObject(item.Type))
+                        Me.imlTreeIcons.Images.Add(item.Type, DirectCast(My.Resources.NeededIcons.ResourceManager.GetObject(item.Type), Image))
                     End If
                     If Not Me.imlTreeIcons.Images.ContainsKey(item.Type & "_selected") Then
                         tnode.Nodes.Add(item.ID.ToString, item.Name, item.Type, item.Type)
@@ -361,7 +363,7 @@ Namespace Forms
                         tnode.Nodes.Add(item.ID.ToString, item.Name, item.Type, item.Type & "_selected")
                     End If
                 Next
-                Me.tsProgressBar.Value = Me.tsProgressBar.Value + 0.5
+                Me.tsProgressBar.Value = CInt(Me.tsProgressBar.Value + 0.5)
             Next
             'Me.tsProgressBar.Visible = False
             Me.StatusStrip1.Text = modGlobal.Translate(Me, "Done.")
@@ -371,12 +373,12 @@ Namespace Forms
 
         Private Sub tvTree_AfterExpand(ByVal sender As Object, ByVal e As TreeViewEventArgs) Handles tvTree.AfterExpand
             e.Node.Nodes.Clear()
-            Me.UpdateTree(e.Node.Name)
+            Me.UpdateTree(CInt(e.Node.Name))
         End Sub
 
         Private Sub tvTree_AfterSelect(ByVal sender As Object, ByVal e As TreeViewEventArgs) Handles tvTree.AfterSelect
             If IsNothing(e.Node) Then Exit Sub
-            Me.UpdateList(e.Node.Name)
+            Me.UpdateList(CInt(e.Node.Name))
         End Sub
 
         Private Sub lvBrowse_ItemActivate(ByVal sender As Object, ByVal e As EventArgs) Handles lvBrowse.ItemActivate
@@ -448,8 +450,8 @@ Namespace Forms
         Public Sub RefreshData()
             If IsNothing(Me.tvTree.SelectedNode) Then Exit Sub
             Me.tvTree.SelectedNode.Nodes.Clear()
-            Me.UpdateTree(Me.tvTree.SelectedNode.Name)
-            Me.UpdateList(Me.tvTree.SelectedNode.Name)
+            Me.UpdateTree(CInt(Me.tvTree.SelectedNode.Name))
+            Me.UpdateList(CInt(Me.tvTree.SelectedNode.Name))
         End Sub
 
         Private Sub FileNameToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles FileNameToolStripMenuItem.Click
@@ -527,7 +529,7 @@ Namespace Forms
                 .Title = modGlobal.Translate(fsDialog, "Save As")
                 .ValidateNames = True
                 .Filter = Me.PlugInsSuport.GetSupportedFileFormatsForWrite
-                .FilterIndex = modGlobal.Settings.ReadSetting("FilterIndex", "SaveAsDialog", 1)
+                .FilterIndex = CInt(modGlobal.Settings.ReadSetting("FilterIndex", "SaveAsDialog", 1))
                 If .ShowDialog() = Windows.Forms.DialogResult.Cancel Then Exit Sub
                 Me.FileName = .FileName
                 modGlobal.Settings.WriteSetting("SaveAsDialog", "FilterIndex", .FilterIndex)
@@ -613,7 +615,7 @@ Namespace Forms
             Dim I As Integer, Obj As ToolStripMenuItem
             For I = 0 To Control.Items.Count - 1
                 Try
-                    Obj = Control.Items.Item(I)
+                    Obj = CType(Control.Items.Item(I), ToolStripMenuItem)
                     Obj.Text = modGlobal.Translate(Me, Control.Items.Item(I).Text)
                     Me.TranslateMenu(Obj.DropDownItems)
                 Catch ex As Exception
@@ -629,7 +631,7 @@ Namespace Forms
             For I = 0 To Control.Count - 1
                 Control.Item(I).Text = modGlobal.Translate(Me, Control.Item(I).Text)
                 Try
-                    Obj = Control.Item(I)
+                    Obj = CType(Control.Item(I), ToolStripMenuItem)
                     Obj.Text = modGlobal.Translate(Me, Control.Item(I).Text)
                     Me.TranslateMenu(Obj.DropDownItems)
                 Catch ex As Exception
@@ -690,7 +692,7 @@ Namespace Forms
                         If IsNothing(Me.tvTree.SelectedNode) Then
                             ID = -1
                         Else
-                            ID = Me.tvTree.SelectedNode.Name
+                            ID = CInt(Me.tvTree.SelectedNode.Name)
                         End If
                     Else
                         ID = -1
@@ -736,7 +738,7 @@ Namespace Forms
                         If Not (AddToList.tsbFromFolder.Checked And AddToList.chkIncludeSubFolders.Checked = False) Then
                             For Each That As DirectoryInfo In DInfo.GetDirectories()
                                 Folders.Add(That.FullName)
-                                ID = Buffer.Add(That.Name, scdItemType.scdFolder, IDs(I + 1))
+                                ID = Buffer.Add(That.Name, scdItemType.scdFolder, CInt(IDs(I + 1)))
                                 IDs.Add(ID)
                                 If AddToList.chkIncludeExtendedInfo.Checked Then
                                     Buffer.Items(ID).AdvancedInfo.Item("RealDirectoryFullName") = That.FullName
@@ -749,7 +751,7 @@ Namespace Forms
                             Next
                         End If
                         For Each That As FileInfo In DInfo.GetFiles()
-                            ID = Buffer.Add(That.Name, scdItemType.scdFile, IDs(I + 1))
+                            ID = Buffer.Add(That.Name, scdItemType.scdFile, CInt(IDs(I + 1)))
                             If AddToList.chkIncludeExtendedInfo.Checked Then
                                 Buffer.Items(ID).AdvancedInfo.Item("Name") = That.Name.ToString
                                 Buffer.Items(ID).AdvancedInfo.Item("Size") = That.Length * 8
@@ -770,7 +772,7 @@ Namespace Forms
                     Dim db_item As Database.Item
                     For Each Item As scdItem In Buffer.Items
                         If Item.Name = "" Then Continue For
-                        db_item = New Database.Item(Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size.ToString, Me.Handle.ToInt64)
+                        db_item = New Database.Item(0, Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size, CInt(Me.Handle.ToInt64))
                         Me.DBConnection.Insert("list", db_item)
                         I = I + 1
                         If I Mod 3 = 5 Then Application.DoEvents()
@@ -807,7 +809,7 @@ Namespace Forms
                         Exit Sub
                     End If
                     Adding.Show(Me)
-                    Dim FTP As New Network.FTP.FTPclient(AddToList.txtEnterInternetAdress.Text, Login.UsernameTextBox.Text, Login.PasswordTextBox.Text)
+                    Dim FTP As New FTPclient(AddToList.txtEnterInternetAdress.Text, Login.UsernameTextBox.Text, Login.PasswordTextBox.Text)
                     Dim Folders As New Collection
                     Dim IDs As New Collection
                     Dim Buffer As New skycd_simple()
@@ -834,7 +836,7 @@ Namespace Forms
                         If IsNothing(Me.tvTree.SelectedNode) Then
                             ID = -1
                         Else
-                            ID = Me.tvTree.SelectedNode.Name
+                            ID = CInt(Me.tvTree.SelectedNode.Name)
                         End If
                     Else
                         ID = -1
@@ -853,18 +855,18 @@ Namespace Forms
                     IDs.Add(ID)
                     Folders.Add(FTP.CurrentDirectory)
                     Adding.pbProgress.Minimum = 0
-                    Dim entry As Network.FTP.FTPdirectory
+                    Dim entry As FTPdirectory
                     Dim O As Integer
                     I = 1
                     Adding.DoIt(Translate(Adding, "Reading directory from remote server..."), Nothing)
                     Do
-                        entry = FTP.ListDirectoryDetail(Folders.Item(I))
+                        entry = FTP.ListDirectoryDetail(Folders.Item(I).ToString)
                         For O = 0 To entry.Count - 1
                             Application.DoEvents()
                             Select Case entry.Item(O).FileType
-                                Case Network.FTP.FTPfileInfo.DirectoryEntryTypes.File
+                                Case FTPfileInfo.DirectoryEntryTypes.File
                                     Try
-                                        ID = Buffer.Add(entry.Item(O).Filename, scdItemType.scdFile, IDs.Item(I))
+                                        ID = Buffer.Add(entry.Item(O).Filename, scdItemType.scdFile, CInt(IDs.Item(I)))
                                     Catch ex As Exception
 
                                     End Try
@@ -875,8 +877,8 @@ Namespace Forms
                                         Buffer.Items(ID).AdvancedInfo.Item("Size") = entry.Item(O).Size * 8
                                         Buffer.Items(ID).AdvancedInfo.Item("FileDateTime") = entry.Item(O).FileDateTime
                                     End If
-                                Case Network.FTP.FTPfileInfo.DirectoryEntryTypes.Directory
-                                    ID = Buffer.Add(entry.Item(O).Filename, scdItemType.scdFolder, IDs.Item(I))
+                                Case FTPfileInfo.DirectoryEntryTypes.Directory
+                                    ID = Buffer.Add(entry.Item(O).Filename, scdItemType.scdFolder, CInt(IDs.Item(I)))
                                     IDs.Add(ID)
                                     Folders.Add(entry.Item(O).FullName)
                                     If AddToList.chkIncludeExtendedInfo.Checked Then
@@ -887,7 +889,7 @@ Namespace Forms
                                     End If
                             End Select
                         Next
-                        Adding.DoIt(String.Format(Translate(Adding, "Reading '{0}'...", Folders.Item(I))), Nothing)
+                        Adding.DoIt(String.Format(Translate(Adding, "Reading '{0}'...", Folders.Item(I).ToString)), Nothing)
                         I = I + 1
                         Application.DoEvents()
                     Loop Until I >= Folders.Count
@@ -898,7 +900,7 @@ Namespace Forms
                         If Item.Name = "" Then
                             Continue For
                         End If
-                        Me.DBConnection.Insert("list", New Database.Item(Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size.ToString, Me.Handle.ToInt64.ToString))
+                        Me.DBConnection.Insert("list", New Database.Item(0, Item.Name, Item.ParentID, Item.ItemType.ToString, Item.AdvancedInfo.All.ToString, Item.Size, CInt(Handle.ToInt64)))
                         I = I + 1
                         If I Mod 3 = 5 Then
                             Application.DoEvents()
@@ -932,11 +934,11 @@ Namespace Forms
             Dim I As Integer
             If Me.lvBrowse.Focused Then
                 For I = 0 To Me.lvBrowse.SelectedItems.Count - 1
-                    Me.Delete(Me.lvBrowse.SelectedItems(I).Name)
+                    Me.Delete(CInt(Me.lvBrowse.SelectedItems(I).Name))
                 Next
                 Dim Text As String = Me.tvTree.SelectedNode.Name
                 Me.lvBrowse.Items.Clear()
-                Me.UpdateList(Text)
+                Me.UpdateList(CInt(Text))
                 Try
                     Me.tvTree.Nodes.Clear()
                     Me.UpdateTree()
@@ -945,7 +947,7 @@ Namespace Forms
 
                 End Try
             Else
-                Me.Delete(Me.tvTree.SelectedNode.Name)
+                Me.Delete(CInt(Me.tvTree.SelectedNode.Name))
                 Me.tvTree.Nodes.Clear()
                 Me.UpdateTree()
             End If
@@ -1070,7 +1072,7 @@ Namespace Forms
                     Fm.AddProperty("Last Access Time", Nfo.Item("LastAccessTime"))
                     Fm.AddProperty("Last Write Time", Nfo.Item("LastWriteTime"))
                     Fm.AddProperty("Creation Time", Nfo.Item("CreationTime"))
-                    Fm.AddProperty("Size", Convert2.Long2Size(Val(Nfo.Item("Size"))))
+                    Fm.AddProperty("Size", Convert2.Long2Size(DirectCast(Nfo.Item("Size"), Long)))
                     Fm.AddProperty(Of FileAttributes)("Attributes", Nfo.Item("Attributes"))
                     Fm.AddProperty("Is Read Only", Nfo.Item("IsReadOnly"))
                 Case "scdfolder"
@@ -1086,11 +1088,11 @@ Namespace Forms
                     Fm.AddProperty("Creation Time", Nfo.Item("CreationTime"))
                     Fm.AddProperty("Attributes", Nfo.Item("Attributes"))
                     Fm.AddProperty("Title", Nfo.Item("Title"))
-                    Fm.AddProperty("Available FreeSpace", Convert2.Long2Size(Val(Nfo.Item("AvailableFreeSpace"))))
+                    Fm.AddProperty("Available FreeSpace", Convert2.Long2Size(DirectCast(Nfo.Item("AvailableFreeSpace"), Long)))
                     Fm.AddProperty("Root Directory", Nfo.Item("RootDirectory"))
                     Fm.AddProperty("Volume Label", Nfo.Item("VolumeLabel"))
-                    Fm.AddProperty("Total Size", Convert2.Long2Size(Val(Nfo.Item("TotalSize"))))
-                    Fm.AddProperty("Total Free Space", Convert2.Long2Size(Val(Nfo.Item("TotalFreeSpace"))))
+                    Fm.AddProperty("Total Size", Convert2.Long2Size(DirectCast(Nfo.Item("TotalSize"), Long)))
+                    Fm.AddProperty("Total Free Space", Convert2.Long2Size(DirectCast(Nfo.Item("TotalFreeSpace"), Long)))
                 Case "scdNetworkRecource".ToLower
                     Fm.AddProperty("Address", Nfo.Item("URL"))
                 Case Else
@@ -1161,7 +1163,7 @@ Namespace Forms
         End Sub
 
         Private Sub ContentsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
-            Dim Fi As New FileInfo(modGlobal.Settings.ReadSetting("HelpFile", , Application.StartupPath & "\Help\index.html"))
+            Dim Fi As New FileInfo(modGlobal.Settings.ReadSetting("HelpFile", , Application.StartupPath & "\Help\index.html").ToString)
             If Fi.Exists Then
                 Help.ShowHelp(Me, Fi.FullName)
             Else

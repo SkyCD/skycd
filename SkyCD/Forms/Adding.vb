@@ -28,9 +28,9 @@ Public Class Adding
 
     Private Sub frmAdding_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseMove
         If e.Button = Windows.Forms.MouseButtons.Left Then
-            Me.Left = Me.Left + (e.X - Me.X)
-            Me.Top = Me.Top + (e.Y - Me.Y)
-        End If
+                Me.Left = Me.Left + CInt(e.X - Me.X)
+                Me.Top = Me.Top + CInt(e.Y - Me.Y)
+            End If
     End Sub
 End Class
 

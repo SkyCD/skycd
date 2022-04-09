@@ -1,7 +1,7 @@
 Module modGlobal
 
     Public Settings As New SCD_XSettings(My.Application.Info.AssemblyName)
-    Public Language As New clsXMLCfgFile(My.Application.Info.DirectoryPath & "\Languages\" & Settings.ReadSetting("Language", , "English") & ".xml", "language")
+    Public Language As New clsXMLCfgFile(My.Application.Info.DirectoryPath & "\Languages\" & Settings.ReadSetting("Language", , "English").ToString & ".xml", "language")
     Public CanCreateForms As Boolean = True
 
     Public ReadOnly Property Translate(ByVal Obj As Object, ByVal Text As String, Optional ByVal DefaultValue As String = Nothing) As String
@@ -14,8 +14,8 @@ Module modGlobal
             Dim Rez As String = DefaultValue
             If Val.Count = 0 Then GoTo NxT
             If Val.Count = 1 Then
-                If Val(1).ToString = DefaultValue Then GoTo nxt
-                Rez = Val(1)
+                If Val(1).ToString = DefaultValue Then GoTo NxT
+                Rez = Val(1).ToString
             Else
                 Dim I As Integer
                 For I = 1 To Val.Count
