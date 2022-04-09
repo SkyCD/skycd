@@ -75,20 +75,20 @@ Public Class Properties ' Creates Properties Dialog Window
                 If Value.ToString = "" Then
                     Me.lvProperties.Items.Add(Translate(Me, Name)).SubItems.Add(Translate(Me, "Unknown"))
                 Else
-                    Me.lvProperties.Items.Add(Translate(Me, Name)).SubItems.Add(Value)
-                End If
+                        Me.lvProperties.Items.Add(Translate(Me, Name)).SubItems.Add(Value.ToString)
+                    End If
             Case "boolean" 'int32 datetime
-                Me.lvProperties.Items.Add(Translate(Me, Name)).SubItems.Add(Translate(Me, Value))
-            Case Else
+                    Me.lvProperties.Items.Add(Translate(Me, Name)).SubItems.Add(Translate(Me, Value.ToString))
+                Case Else
                 Me.lvProperties.Items.Add(Translate(Me, Name)).SubItems.Add(Value.ToString)
         End Select
     End Sub
 
     Public Sub AddProperty(Of CustomType)(ByVal Name As String, ByVal Value As Object)
         If Value.ToString.Length > 0 Then
-            Dim Obj As CustomType = Value
-            Me.lvProperties.Items.Add(Translate(Me, Name)).SubItems.Add(Translate(Me, Obj.ToString))
-        Else
+                Dim Obj As CustomType = CType(Value, CustomType)
+                Me.lvProperties.Items.Add(Translate(Me, Name)).SubItems.Add(Translate(Me, Obj.ToString))
+            Else
             Me.lvProperties.Items.Add(Translate(Me, Name)).SubItems.Add(Translate(Me, "Unknown"))
         End If
     End Sub

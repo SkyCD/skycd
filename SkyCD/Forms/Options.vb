@@ -84,8 +84,8 @@ Namespace Forms
             InitializeComponent()
 
             ' Add any initialization after the InitializeComponent() call.
-            Me.lvPlugIns.Columns.Item(0).Width = Me.lvPlugIns.Width / 2
-            Me.lvPlugIns.Columns.Item(1).Width = Me.lvPlugIns.Width / 3
+            Me.lvPlugIns.Columns.Item(0).Width = CInt(Me.lvPlugIns.Width / 2)
+            Me.lvPlugIns.Columns.Item(1).Width = CInt(Me.lvPlugIns.Width / 3)
         End Sub
 
         Private Sub lvPlugIns_Click(ByVal sender As Object, ByVal e As EventArgs) Handles lvPlugIns.Click
@@ -94,7 +94,8 @@ Namespace Forms
 
         Private Sub cmdConfigurePlugIn_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdConfigurePlugIn.Click
             Dim Dll As New PlugInsSupport()
-            Dll.Load(Of Object)(Me.lvPlugIns.SelectedItems.Item(0).Text).ShowDialog()
+            Dim plugin As Object = Dll.Load(Of Object)(Me.lvPlugIns.SelectedItems.Item(0).Text)
+            plugin.GetType().GetMethod("ShowDialog").Invoke(plugin, Nothing)
         End Sub
 
         Private Sub txtPlugIsPath_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtPlugIsPath.TextChanged
@@ -105,7 +106,7 @@ Namespace Forms
 
         Private Sub OK_Click(ByVal sender As Object, ByVal e As EventArgs) Handles OK.Click
             RaiseEvent OKPressed()
-            Dim t As Boolean = (Me.lstLanguages.SelectedItem.ToString <> modGlobal.Settings.ReadSetting("Language", , "English"))
+            Dim t As Boolean = (Me.lstLanguages.SelectedItem.ToString <> modGlobal.Settings.ReadSetting("Language", , "English").ToString)
             t = t Or (Forms.Main.PlugInsSuport.Path <> PPath)
             modGlobal.Settings.WriteSetting("Language", Me.lstLanguages.SelectedItem.ToString)
             Forms.Main.PlugInsSuport.Path = Me.txtPlugIsPath.Text

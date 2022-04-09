@@ -92,7 +92,7 @@ Public Class DatabaseProxy
                 .Parameters.Add(New SQLiteParameter(DbType.String, arg))
             Next
             .CommandText = query
-            ret = .ExecuteScalar()
+            ret = CType(.ExecuteScalar(), T)
         End With
         Return ret
     End Function

@@ -10,19 +10,19 @@
 
         Public ReadOnly Property FileName() As String
             Get
-                Return Settings.ReadSetting("FileName", "PlugIn." + Me.Name)
+                Return Settings.ReadSetting("FileName", "PlugIn." + Me.Name).ToString
             End Get
         End Property
 
         Public ReadOnly Property FullInfo() As String
             Get
-                Return Settings.ReadSetting("FullInfo", "PlugIn." + Me.Name)
+                Return Settings.ReadSetting("FullInfo", "PlugIn." + Me.Name).ToString
             End Get
         End Property
 
         Public ReadOnly Property Type() As String
             Get
-                Select Case Settings.ReadSetting("Type", "PlugIn." + Me.Name)
+                Select Case CInt(Settings.ReadSetting("Type", "PlugIn." + Me.Name))
                     Case 1
                         Return Translate(Me, "File Format Support")
                     Case 2
@@ -76,7 +76,7 @@
 
         Public ReadOnly Property HasConfig() As Boolean
             Get
-                Return Settings.ReadSetting("HasConfig", "PlugIn." + Me.Name, False)
+                Return Convert.ToBoolean(Settings.ReadSetting("HasConfig", "PlugIn." + Me.Name, False))
             End Get
         End Property
 
