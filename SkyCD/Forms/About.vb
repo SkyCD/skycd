@@ -1,7 +1,4 @@
-Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports System.IO.Path
-Imports SkyCD.Libraries.AdvancedFunctions
 
 Namespace Forms
 
@@ -17,6 +14,7 @@ Namespace Forms
         Dim tw As Boolean = False
         Dim zingsnis As Integer = 12
 
+        <CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification:="<Pending>")>
         Private Sub tmrFX_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles tmrFX.Tick
             Dim Matrix As New Matrix()
             Me.DrawingBox1.DeleteLayer(Me.msglayer_nr)
@@ -125,6 +123,7 @@ Namespace Forms
             If schange = True Then schange = False
         End Sub
 
+        <CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification:="<Pending>")>
         Private Sub DrawingBox1_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles DrawingBox1.MouseDown
             If e.Button = MouseButtons.Left Then
                 If (e.X < 20 Or e.X > (Me.DrawingBox1.Width - 20)) Or (e.Y < 20 Or e.Y > (Me.DrawingBox1.Height - 20)) Then
@@ -169,6 +168,7 @@ Namespace Forms
             End If
         End Sub
 
+        <CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification:="<Pending>")>
         Public Sub New()
 
             ' This call is required by the Windows Form Designer.
@@ -263,6 +263,7 @@ Namespace Forms
 
         End Sub
 
+        <CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification:="<Pending>")>
         Private Function JustifyText(ByVal Text As String) As String
             Static Tarpas As Single = Me.DrawingBox1.CreateGraphics.MeasureString(" ", Me.Font, New PointF(20, 20), New StringFormat()).ToSize.Width
             Dim Ilgis As Single = Me.DrawingBox1.CreateGraphics.MeasureString(Text, Me.Font, New PointF(0, 0), New StringFormat()).Width

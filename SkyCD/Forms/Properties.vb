@@ -11,7 +11,8 @@ Public Class Properties ' Creates Properties Dialog Window
         Me.Close()
     End Sub
 
-    Private Sub rtbComments_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles rtbComments.KeyUp
+        <CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification:="<Pending>")>
+        Private Sub rtbComments_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles rtbComments.KeyUp
         Dim fnt As System.Drawing.Font
         With Me.rtbComments
             If e.Control And Not e.Alt Then
