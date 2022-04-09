@@ -173,8 +173,6 @@
     <PackageReference Include="SkyCD.SCD_XSettings.dll" Version="0.1.0" />
     <PackageReference Include="SkyCD.Simple" Version="0.1.1">
     </PackageReference>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.115.5" />
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
   </ItemGroup>
 </Project>
