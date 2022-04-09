@@ -3,8 +3,7 @@ name: Release Drafter
 on: 
   push:
     branches: 
-      - 'master'
-      - 'branches/impresscms_1.4'
+      - main
 
 jobs:
   update_release_draft:
