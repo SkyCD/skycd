@@ -145,13 +145,6 @@
     <Content Include="Languages\Lithuanian.xml" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Data.Access.Components.2.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft Data Access Components 2.8</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
     <PublishFile Include="Icon.ico">
       <Visible>False</Visible>
       <Group>
