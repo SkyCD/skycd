@@ -1,15 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2901D66B-B925-4BB5-A214-0668C637191A}</ProjectGuid>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <StartupObject>SkyCD.App.My.MyApplication</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>SkyCD.App</RootNamespace>
-    <AssemblyName>SkyCD</AssemblyName>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
     <SignManifests>false</SignManifests>
@@ -18,9 +12,6 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ManifestCertificateThumbprint>92D5AE004417C54E55F2C4667FD181D27B6D82EA</ManifestCertificateThumbprint>
     <ManifestKeyFile>SkyCD_TemporaryKey.pfx</ManifestKeyFile>
-    <OptionStrict>Off</OptionStrict>
-    <OptionCompare>Binary</OptionCompare>
-    <OptionExplicit>On</OptionExplicit>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -29,12 +20,6 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>2.0</OldToolsVersion>
     <PublishUrl>C:\Documents and Settings\Administrator\Desktop\Install\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -55,16 +40,12 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <DefineDebug>true</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
@@ -73,13 +54,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <WarningsAsErrors>
     </WarningsAsErrors>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
@@ -89,227 +66,78 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <WarningsAsErrors>
     </WarningsAsErrors>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Data.SQLite, Version=1.0.101.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Data.SQLite.Core.1.0.101.0\lib\net46\System.Data.SQLite.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.SQLite.EF6, Version=1.0.101.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.101.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.SQLite.Linq, Version=1.0.101.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.101.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.XML" />
-  </ItemGroup>
-  <ItemGroup>
-    <Import Include="Microsoft.VisualBasic" />
-    <Import Include="System" />
-    <Import Include="System.Collections" />
-    <Import Include="System.Data" />
-    <Import Include="System.Diagnostics" />
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\DatabaseProxy.vb" />
-    <Compile Include="Forms\About.Designer.vb">
+    <Compile Update="Forms\About.Designer.vb">
       <DependentUpon>About.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\About.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Class1.vb" />
-    <Compile Include="clsXMLCfgFile.vb" />
-    <Compile Include="Forms\Main.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Main.Designer.vb">
-      <DependentUpon>Main.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Adding.Designer.vb">
+    <Compile Update="Forms\Adding.Designer.vb">
       <DependentUpon>Adding.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Adding.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AddToList.Designer.vb">
+    <Compile Update="Forms\AddToList.Designer.vb">
       <DependentUpon>AddToList.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddToList.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Login.Designer.vb">
+    <Compile Update="Forms\Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Login.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Options.Designer.vb">
+    <Compile Update="Forms\Options.Designer.vb">
       <DependentUpon>Options.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Options.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Properties.Designer.vb">
+    <Compile Update="Forms\Properties.Designer.vb">
       <DependentUpon>Properties.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Properties.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="modGlobalVars.vb" />
-    <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="My Project\Application.Designer.vb">
+    <Compile Update="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
+    <Compile Update="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Settings.Designer.vb">
+    <Compile Update="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="My Project\ApplicationEvents.vb" />
-    <Compile Include="Plugins\PlugInInfo.vb" />
-    <Compile Include="Plugins\PlugInsSupport.vb">
-    </Compile>
-    <Compile Include="Resx\Cursors.Designer.vb">
+    <Compile Update="Resx\Cursors.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Cursors.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resx\NeededIcons.Designer.vb">
+    <Compile Update="Resx\NeededIcons.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NeededIcons.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resx\ProgramIcons.Designer.vb">
+    <Compile Update="Resx\ProgramIcons.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProgramIcons.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resx\ToolBars.Designer.vb">
+    <Compile Update="Resx\ToolBars.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ToolBars.resx</DependentUpon>
     </Compile>
-    <Compile Include="Startup.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\About.resx">
-      <DependentUpon>About.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main.resx">
-      <DependentUpon>Main.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Adding.resx">
-      <DependentUpon>Adding.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddToList.resx">
-      <DependentUpon>AddToList.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Login.resx">
-      <DependentUpon>Login.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Options.resx">
-      <DependentUpon>Options.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Properties.resx">
-      <DependentUpon>Properties.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resx\Cursors.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Cursors.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resx\NeededIcons.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>NeededIcons.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resx\ProgramIcons.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ProgramIcons.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resx\ToolBars.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ToolBars.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="data.db">
+    <None Update="data.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="My Project\Application.myapp">
+    <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
-    <None Include="My Project\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="My Project\app.manifest" />
-    <None Include="packages.config" />
-    <None Include="Resources\folder.ICO" />
-    <None Include="Resources\folder-closed.ICO" />
-    <None Include="Resources\print.ICO" />
-    <None Include="Resources\save.ICO" />
-    <None Include="Resources\cd.ICO" />
-    <None Include="empty.ico" />
-    <None Include="Resources\cd-rom with hardware.ICO" />
+    <Content Include="appsettings.json" />
     <Content Include="Icon.ico" />
-    <None Include="Resources\cd1.ICO" />
-    <None Include="Resources\cd-rom with hardware.png" />
-    <None Include="Resources\folder closed.png" />
-    <None Include="Resources\around the world.png" />
-    <None Include="Resources\keys.gif" />
-    <None Include="Resources\CD_6.gif" />
-    <None Include="Resources\shared_folder.ICO" />
     <Content Include="Languages\English.xml" />
     <Content Include="Languages\Lithuanian.xml" />
   </ItemGroup>
@@ -366,28 +194,16 @@
     <Folder Include="Libraries\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\SkyCD.Core.vbproj">
-      <Project>{4e89bba3-358a-443c-9e1c-492e1faac150}</Project>
-      <Name>SkyCD.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Libraries\scdStringsLibrary\SkyAdvancedFunctions.vbproj">
-      <Project>{a571a7ff-8001-43e3-a1f2-ad0136a6f9fe}</Project>
-      <Name>SkyAdvancedFunctions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Libraries\SkyCD_Simple\SkyCD_Simple.vbproj">
-      <Project>{a5ce10d2-8d0e-403c-b6b5-ecc5045eee90}</Project>
-      <Name>SkyCD_Simple</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
-  <Import Project="..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets'))" />
-  </Target>
+  <ItemGroup>
+    <PackageReference Include="SkyCD.AdvancedFunctions.dll" Version="0.1.2" />
+    <PackageReference Include="SkyCD.Core.dll" Version="0.1.0" />
+    <PackageReference Include="SkyCD.DrawingBox.dll" Version="0.1.5" />
+    <PackageReference Include="SkyCD.SCD_XSettings.dll" Version="0.1.0" />
+    <PackageReference Include="SkyCD.Simple" Version="0.1.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.115.5" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+  </ItemGroup>
 </Project>

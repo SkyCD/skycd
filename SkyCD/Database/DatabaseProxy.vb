@@ -3,6 +3,7 @@ Imports SkyCD.Database
 Imports System.Data.SQLite
 Imports System.Data.Common
 Imports System.Reflection
+Imports System.Data
 
 Public Class DatabaseProxy
     Implements iConnection
@@ -15,7 +16,7 @@ Public Class DatabaseProxy
 
     Public Sub Execute(query As String, ParamArray args() As Object) Implements iConnection.Execute
         Dim cmd As SQLiteCommand = Me.CreateCommand(query, args)
-        If Not Me.Database.State = ConnectionState.Open Then
+        If Not Me.Database.State = Data.ConnectionState.Open Then
             Me.Database.Open()
         End If
         cmd.ExecuteNonQuery()
@@ -49,7 +50,7 @@ Public Class DatabaseProxy
                 cmd.Parameters.Add(New SQLiteParameter(DbType.String, p.GetValue(item)))
             Next
         End If
-        If Not Me.Database.State = ConnectionState.Open Then
+        If Not Me.Database.State = Data.ConnectionState.Open Then
             Me.Database.Open()
         End If
         Dim ret As Integer = cmd.ExecuteNonQuery()
@@ -68,7 +69,7 @@ Public Class DatabaseProxy
     Public Function [Select](query As String, ParamArray args() As Object) As List(Of Item) Implements iConnection.Select
         Dim ret As New List(Of Item)
         Dim cmd As SQLiteCommand = Me.CreateCommand(query, args)
-        If Not Me.Database.State = ConnectionState.Open Then
+        If Not Me.Database.State = Data.ConnectionState.Open Then
             Me.Database.Open()
         End If
         Dim reader As DbDataReader = cmd.ExecuteReader()

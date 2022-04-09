@@ -1,9 +1,10 @@
-Imports SkyCD.Libraries.AdvancedFunctions
-Imports SkyCD.Libraries.AdvancedFunctions.File
-Imports SkyCD_Simple
-Imports SkyCD_Simple.skycd_simple
+Imports SkyCD.AdvancedFunctions
+Imports SkyCD.AdvancedFunctions.File
+Imports SkyCD.Simple
+Imports SkyCD.Simple.skycd_simple
 Imports System.IO
 Imports SkyCD.App.Plugins
+Imports Convert2 = SkyCD.AdvancedFunctions.Convert
 
 Namespace Forms
 
@@ -290,7 +291,7 @@ Namespace Forms
                             Me.lvBrowse.Items.Add(item.ID.ToString, item.Name, item.Type & "/../" & item.Name).SubItems.Add(Convert2.Long2Size(Nfo.Item("Size")))
                         Else
                             If Me.imlBrowseIcons.Images.IndexOfKey(item.Type & "/" & Ext) < 0 Then
-                                Me.imlBrowseIcons.Images.Add(item.Type & "/" & Ext, GetFileIcon(item.Name))
+                                Me.imlBrowseIcons.Images.Add(item.Type & "/" & Ext, GetFileIcon3(item.Name.ToString))
                             End If
                             Me.lvBrowse.Items.Add(item.ID.ToString, item.Name, item.Type + "/" + Ext).SubItems.Add(Convert2.Long2Size(Val(Nfo.Item("Size"))))
                         End If
@@ -664,7 +665,7 @@ Namespace Forms
                     Dim Folders As New Collection
                     Dim IDs As New Collection
                     Dim DInfo As DirectoryInfo
-                    Dim Buffer As New SkyCD_Simple.skycd_simple()
+                    Dim Buffer As New skycd_simple()
                     Dim ID As Integer
                     Adding.Show(Me)
                     Dim sql As String = "SELECT * FROM list WHERE AID = ?"
@@ -809,7 +810,7 @@ Namespace Forms
                     Dim FTP As New Network.FTP.FTPclient(AddToList.txtEnterInternetAdress.Text, Login.UsernameTextBox.Text, Login.PasswordTextBox.Text)
                     Dim Folders As New Collection
                     Dim IDs As New Collection
-                    Dim Buffer As New SkyCD_Simple.skycd_simple()
+                    Dim Buffer As New skycd_simple()
                     Dim ID As Integer
                     Dim sql As String = "SELECT * FROM list WHERE AID = ?"
                     Adding.DoIt(modGlobal.Translate(Me, "Preparing database for modifications..."), Nothing)

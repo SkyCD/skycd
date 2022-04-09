@@ -1,5 +1,5 @@
 Imports SkyCD.App.Forms
-Imports SkyCD.Libraries.AdvancedFunctions.File
+Imports SkyCD.AdvancedFunctions.File
 
 Namespace Plugins
 
