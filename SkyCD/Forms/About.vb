@@ -1,7 +1,4 @@
-Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports System.IO.Path
-Imports SkyCD.Libraries.AdvancedFunctions
 
 Namespace Forms
 

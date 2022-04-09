@@ -1,6 +1,4 @@
 Imports SkyCD.AdvancedFunctions.File
-Imports SkyCD.AdvancedFunctions.Network.FTP.FTPclient
-Imports SkyCD.AdvancedFunctions.Network.FTP.FTPdirectory
 Imports SkyCD.Simple
 Imports SkyCD.Simple.skycd_simple
 Imports System.IO
