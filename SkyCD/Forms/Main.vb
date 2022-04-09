@@ -1174,11 +1174,11 @@ Namespace Forms
         End Sub
 
         Private Sub ProjectWebsiteInSourceforgeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProjectWebsiteInSourceforgeToolStripMenuItem.Click
-            Process.Start("https://sourceforge.net/projects/skycd/")
+            Process.Start(New ProcessStartInfo("https://sourceforge.net/projects/skycd/") With {.UseShellExecute = True})
         End Sub
 
         Private Sub ProjectAreainGithubToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProjectAreainGithubToolStripMenuItem.Click
-            Process.Start("https://github.com/SkyCD/SkyCD")
+            Process.Start(New ProcessStartInfo("https://github.com/SkyCD/SkyCD") With {.UseShellExecute = True})
         End Sub
     End Class
 
