@@ -167,7 +167,7 @@
     <PackageReference Include="SkyCD.Core.dll" Version="0.1.0" />
     <PackageReference Include="SkyCD.DrawingBox.dll" Version="0.1.5" />
     <PackageReference Include="SkyCD.SCD_XSettings.dll" Version="0.1.0" />
-    <PackageReference Include="SkyCD.Simple" Version="0.1.1">
+    <PackageReference Include="SkyCD.Simple" Version="0.3.0">
     </PackageReference>
     <PackageReference Include="System.Data.SQLite" Version="1.0.115.5" />
   </ItemGroup>
