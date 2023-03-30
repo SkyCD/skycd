@@ -164,7 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="SkyCD.AdvancedFunctions.dll" Version="0.1.2" />
-    <PackageReference Include="SkyCD.Core.dll" Version="0.1.0" />
+    <PackageReference Include="SkyCD.Core.dll" Version="0.2.0" />
     <PackageReference Include="SkyCD.DrawingBox.dll" Version="0.1.5" />
     <PackageReference Include="SkyCD.SCD_XSettings.dll" Version="0.1.0" />
     <PackageReference Include="SkyCD.Simple" Version="0.1.1">
